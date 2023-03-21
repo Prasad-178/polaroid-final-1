@@ -1,0 +1,24 @@
+<%- include('./partials/boilerplate.ejs') %>
+<%- include('./partials/nav.ejs', {check: check}) %>
+<link rel="stylesheet" href="/css/list_page.css">
+<div class="main">
+    <div class="div-classifier">
+      editor's choice
+    </div>
+    <div class="div-time-since-update">
+      Updated 19h ago
+    </div>
+    <div class="div-list-tagline">
+      For when you don't know what to watch
+    </div>
+    <div class="div-list-description">
+      It is hard to pick a film to watch.<br>
+      Movies are handpicked by our editors.<br>
+      We hope you will enjoy your time watching the movies.
+    </div>
+    <div class="grid-container" id="grid-container">
+      <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/list_image.jpg" alt="image"></div>
+    </div>
+</div>
+<script src="/scripts/list_page.js" charset="utf-8"></script>
+<%- include('./partials/footer.ejs') %>

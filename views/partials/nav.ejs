@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/css/nav.css" />
+<script src="../script.js"></script>
+
+<nav>
+  <div class="logo"> <a href="/"> <img src="/assets/Logo.jpg" height="35px"> </a> </div>
+  <input type="checkbox" id="checkbox" />
+  <label for="checkbox" id="icon">
+    <svg
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"
+      ></path>
+    </svg>
+  </label>
+  <ul>
+    <li><a href="/" id="home">Home</a></li>
+    <li><a href="/films" id="films">Films</a></li>
+    <li><a href="/lists" id="lists">Lists</a></li>
+    <li><a href="/user/login" id="settings"> <%= !check ? "Sign In" : "Settings" %> </a></li>
+    <li id="searchButtonLi">
+      <a href="/search">
+        <button id="searchButton">
+          <img src="/assets/icons8-search-16.png" />
+        </button>
+      </a>
+    </li>
+  </ul>
+</nav>
+<script src="/scripts/nav.js"></script>

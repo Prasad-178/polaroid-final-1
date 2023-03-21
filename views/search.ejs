@@ -1,0 +1,44 @@
+<%- include('./partials/boilerplate') %>
+<%- include('./partials/nav', {check: check}) %>
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/search.css" />
+<div class="main">
+  <div class="search-div">
+    <input type="search" class="search-box" placeholder="search anything" required autocomplete="off">
+    <button type="button" class="search-button">
+      <img src="/assets/magnifyingglass.png" class="search-img" alt="search-jpg">
+    </button>
+  </div>
+  <div class="section-heading">found 2 matches for "avatar 2"</div>
+  <div class="element-container">
+    <div class="film-image-container">
+      <img class="film-image" src="/assets/filmimg.jpg" alt="image">
+    </div>
+    <div class="film-content">
+      <div class="film-header">
+        <a class="film-name" href="/film">Avatar: The Way of Water</a>
+        <div class="film-year">2022</div>
+      </div>
+      <div class="film-desc">
+        Directed by
+        <div class="film-director">James Cameron</div>
+      </div>
+    </div>
+  </div>
+  <div class="element-container">
+    <div class="film-image-container">
+      <img class="film-image" src="/assets/filmimg.jpg" alt="image">
+    </div>
+    <div class="film-content">
+      <div class="film-header">
+        <a class="film-name" href="/film">Avatar: The Way of Water</a>
+        <div class="film-year">2022</div>
+      </div>
+      <div class="film-desc">
+        Directed by
+        <div class="film-director">James Cameron</div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('./partials/footer.ejs') %>

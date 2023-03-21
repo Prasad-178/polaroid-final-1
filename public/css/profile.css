@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #14181c;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    padding-right: 20%;
+    padding-left: 20%;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.topLeft {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.topLeftRight {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: flex-start ;
+}
+
+.username {
+    color: white;
+    font-size: 24px;
+    opacity: 0.9;
+    font-weight: 600;
+    margin: 0;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.followButton {
+    width: 50%;
+    background-color: rgb(68, 82, 95);
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0.9;
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+.followButton:hover {
+    background-color: rgb(80, 94, 106);
+}
+
+.dp {
+    border-radius: 100%;
+}
+
+.topRight {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    gap: 20px;
+}
+
+.topRightComponent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+}
+
+.numberComp {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 2px;
+    color: rgb(104, 152, 175);
+    letter-spacing: 1px;
+}
+
+.nameComp {
+    font-size: 10px;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: 1.5px;
+}
+
+.bottom {
+    display: flex;
+    flex-direction: column;
+}
+
+.favFilmsHead {
+    font-size: 14px;
+    opacity: 0.8;
+    letter-spacing: 1.5px;
+    color: white;
+    margin: 10px;
+    margin-left: 0px;
+    margin-top: 50px;
+}
+
+.favFilms {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 80%;
+    max-width: 850px;
+    min-width: 350px;
+    border-top: 1px solid white;
+    margin-top: -5px;
+    padding-top: 5px;
+}
+
+.favFilms img  {
+    max-height: 200px;
+    cursor: pointer;
+}
+
+.notFirst {
+    margin-top: 50px;
+}
+
+.favFilms img:hover {
+    outline: 2px solid white;
+}

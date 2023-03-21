@@ -1,0 +1,119 @@
+<%- include('./partials/boilerplate.ejs') %>
+<%- include('./partials/nav.ejs', {check: check}) %>
+<link rel="stylesheet" href="/css/booking.css">
+<title>Seat Selection</title>
+<form method="post" action="/booking">
+  <div class="main">
+      <div class="selector-container">
+        <div>
+            <label for ="date">Select A Date</label>
+            <select id="date" class="movie-selector" required autocomplete="off"
+              oninvalid="this.setCustomValidity('Please select a date')"
+              oninput="this.setCustomValidity('')">
+                <option value="">--Select a date--</option>
+                <option value="1">17th March, Friday</option>
+                <option value="2">19th March, Sunday</option>
+                <option value="3">20th March, Monday</option>
+            </select>
+        </div>
+        <div>
+            <label for ="movie">Select A Movie</label>
+            <select id="movie" class="movie-selector" required autocomplete="off"
+              oninvalid="this.setCustomValidity('Please select a show timing')"
+              oninput="this.setCustomValidity('')">
+                <option value="">--Select your show--</option>
+                <option value="1">Timings: 9:00am</option>
+                <option value="2">Timings: 12:20pm</option>
+                <option value="3">Timings: 4:00pm</option>
+                <option value="4">Timings: 6:30pm</option>
+                <option value="5">Timings: 9:00pm</option>
+            </select>
+        </div>
+      </div>
+
+
+      <div class="seat-group-div">
+        <div class="seat-group">
+          <div class="seat"> </div>
+          <small>Available</small>
+        </div>
+        <div class="seat-group">
+          <div class="seat selected"> </div>
+          <small>Selected</small>
+        </div>
+        <div class="seat-group">
+          <div class="seat Occupied"> </div>
+          <small>Occupied</small>
+        </div>
+      </div>
+
+      <!-- To add oerspersepective to screen -->
+      <div class="container">
+          <div class="screen">
+          </div>
+          <!-- In Each Row 8 Seats will be there with 8 rows in Total -->
+          <div class="row">
+              <div class="seat"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+          </div>
+          <div class="row">
+              <div class="seat"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat Occupied"></div>
+          </div>
+          <div class="row">
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat"></div>
+              <div class="seat Occupied"></div>
+          </div>
+          <div class="row">
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+          </div>
+          <div class="row">
+              <div class="seat"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat"></div>
+          </div>
+          <div class="row">
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat"></div>
+              <div class="seat Occupied"></div>
+              <div class="seat"></div>
+          </div>
+      </div>
+      <button type="submit" name="button" class="button-submit">Proceed to Payment</button>
+  </div>
+</form>
+<%- include('./partials/footer.ejs') %>

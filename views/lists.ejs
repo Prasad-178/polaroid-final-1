@@ -1,0 +1,55 @@
+<%- include('./partials/boilerplate.ejs') %>
+<%- include('./partials/nav.ejs', {check: check}) %>
+<title>List | Polaroid</title>
+<link rel="stylesheet" type="text/css" href="/css/list.css" />
+<div class="main">
+    <div class="section-header">
+        <div class="section-header-description">Editor's Choice</div>
+        <a class="btn" href="#" role="button">More</a>
+    </div>
+    <div class="card-group" id="card-group">
+        <div class="card">
+            <a href="/listpage">
+                <div class="img-container"><img src="/assets/list_image.jpg" alt="Avatar"></div>
+                <div class="container">
+                    <div class="section-description">Editor's choice</div>
+                    <p>for when you don't know what to watch</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <br><br>
+    <div class="section-header">
+        <div class="section-header-description">Editor's Choice</div>
+        <a class="btn" href="#" role="button">More</a>
+    </div>
+    <div class="card-group" id="card-group">
+        <div class="card">
+            <a href="#">
+                <div class="img-container"><img src="/assets/list_image2.jpg" alt="Avatar"></div>
+                <div class="container">
+                    <div class="section-description">Editor's choice</div>  
+                    <p>Some description of this list</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <br><br>
+    <div class="section-header">
+        <div class="section-header-description">Editor's Choice</div>
+        <a class="btn" href="#" role="button">More</a>
+    </div>
+    <div class="card-group" id="card-group">
+        <div class="card">
+            <a href="#">
+                <div class="img-container"><img src="/assets/list_image3.jpg" alt="Avatar"></div>
+                <div class="container">
+                    <div class="section-description">Editor's choice</div>
+                    <p>Some description of this list</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<%- include('./partials/footer') %>
+<script src="/scripts/list.js" charset="utf-8"></script>

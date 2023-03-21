@@ -1,0 +1,117 @@
+<%- include('./partials/boilerplate.ejs') %>
+<%- include('./partials/nav.ejs', { check: check }) %>
+    <title>Polaroid</title>
+    <link rel="stylesheet" href="/css/polaroid.css">
+    <div class="backdrop-image-container">
+      <div class="backdrop-image"></div>
+    </div>
+    <h2 class="headline">
+      Track films you've watched.
+      <br>
+      Save those you want to see.
+      <br>
+      Tell your friends what's good.
+    </h2>
+    <% if (check===false) { %>
+      <button type="button" class="getstarted-button" onclick="location.href='/user/register'">get started &mdash; it's free!</button>
+    <% } %>
+    <div class="top-text-div">
+      The social network for film lovers.
+      <% if (check===false) { %>
+        Alreay a memeber ? <a href="/user/login">Sign in</a>
+      <% } %>
+    </div>
+    <div class="grid-container1" id="header-list">
+      <div class="grid-img-container1"><img onclick="location.href='/film'" class="grid-img1" src="/assets/filmimg.jpg" alt="image"></div>
+    </div>
+
+    <div class="feature-container">
+      <div class="feature-tag-line-container">
+        <h2 class="feature-tag-line">polaroid lets you...</h2>
+      </div>
+      <div class="feature-elements-container">
+        <div class="element element1">
+          <div class="element-icon">
+            <img src="/assets/eye_icon.png" alt="eye-icon">
+          </div>
+          <div>Keep track of every flim you've ever watched
+          (or just start from the day you join)</div>
+        </div>
+        <div class="element element2">
+          <div class="element-icon">
+            <img src="/assets/favorite_icon.png" alt="favorite-icon">
+          </div>
+          <div>Show some love for your favorite films,
+          lists and reviews with a “like”</div>
+        </div>
+        <div class="element element3">
+          <div class="element-icon">
+            <img src="/assets/list_icon.png" alt="list-icon">
+          </div>
+          <div>Write and share reviews, and follow friends
+          and other members to read theirs</div>
+        </div>
+        <div class="element element1">
+          <div class="element-icon">
+            <img src="/assets/star_icon.png" alt="star-icon">
+          </div>
+          <div>Rate each film on a five-star scale (with halves)
+          to record and share your reaction</div>
+        </div>
+        <div class="element element2">
+          <div class="element-icon">
+            <img src="/assets/journal_icon.png" alt="journal-icon">
+          </div>
+          <div>Keep a diary of your film watching (and upgrade to
+          <strong>Pro</strong> for comprehensive stats)</div>
+        </div>
+        <div class="element element3">
+          <div class="element-icon">
+            <img src="/assets/write_icon.png" alt="write-icon">
+          </div>
+          <div>Compile and share lists of films on any topic and
+          keep a watchlist of films to see</div>
+        </div>
+      </div>
+    </div>
+    <div class="header">hello, oscar</div>
+    <div class="grid-container">
+      <div class="grid-img-container2" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
+    </div>
+    <div class="header">just released</div>
+    <div class="grid-container">
+      <div class="grid-img-container3" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
+    </div>
+    <div class="">
+      <h2 class="mid-header">
+        Write and share reviews. Compile your own lists.
+        Share your life in film.
+      </h2>
+      <div class="mid-description">
+        Below are some popular reviews and lists from this week.
+      </div>
+      <div class="mid-description">
+        <a href="register.html">Sign up</a>&nbsp; to create your own.
+      </div>
+    </div>
+    <div class="section-heading">
+      <div>popular this week</div>
+      <a href="/films">more</a>
+    </div>
+    <div class="element-container">
+      <div class="film-image-container">
+        <img class="film-image" src="/assets/filmimg.jpg" alt="image">
+      </div>
+      <div class="film-content">
+        <div class="film-header">
+          <a class="film-name" href="/film">Avatar: The Way of Water</a>
+          <div class="film-year">2022</div>
+        </div>
+        <div class="film-desc">
+          Directed by
+          <div class="film-director">James Cameron</div>
+        </div>
+      </div>
+    </div>
+    <script src="/scripts/polaroid.js" charset="utf-8"></script>
+<%- include('./partials/footer.ejs') %>

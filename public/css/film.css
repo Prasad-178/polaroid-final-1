@@ -1,0 +1,427 @@
+body {
+  margin: 0;
+  background-color: #14181c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main {
+  padding-top: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  /* padding-left: 13%; */
+  max-width: 1000px;
+  align-items: center;
+  justify-content: center;
+}
+
+.movieheading {
+  font-family: "DM Serif Display", serif;
+  line-height: 10px;
+  margin-bottom: 2%;
+}
+
+.moviename {
+  letter-spacing: 1.5px;
+}
+
+.year {
+  letter-spacing: 0.75px;
+}
+
+.directedBy {
+  letter-spacing: 0.75px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1.75fr 1fr;
+  column-gap: 10px;
+  margin-bottom: 2%;
+}
+
+.wtw {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  opacity: 0.7;
+}
+
+.wtw-right {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+}
+
+tr td a {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+table {
+  font-family: arial, sans-serif;
+  font-size: 13px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  text-align: left;
+  padding: 8px;
+}
+
+.trailer {
+  margin-left: 0%;
+}
+
+.centre {
+  max-width: 400px;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.catchphrase {
+  opacity: 0.7;
+  letter-spacing: 0.5px;
+}
+
+.wheretowatch {
+  font-family: "DM Serif Display", serif;
+  opacity: 0.9;
+}
+
+.description {
+  font-size: 19px;
+  font-family: "DM Serif Display", serif;
+  opacity: 0.8;
+}
+
+.genres {
+  font-size: 24px;
+  opacity: 0.7;
+  border-bottom: 1px solid white;
+  margin-top: 10%;
+}
+
+.genrelist {
+  margin-top: -3%;
+  font-size: 18px;
+}
+
+.fa-bars {
+  color: #007bff;
+  font-size: 30px;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  margin-top: 30px;
+  font-weight: 600;
+}
+
+.sign-in {
+  color: white;
+  background-color: #455468;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.share {
+  color: white;
+  background-color: #455468;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.bookTickets {
+  color: white;
+  background-color: #455468;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.sign-in:hover {
+  opacity: 0.9;
+}
+
+.share:hover {
+  opacity: 0.9;
+}
+
+.bookTickets:hover {
+  opacity: 0.9;
+}
+
+.star-rating {
+  /* border: solid 1px #ccc; */
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 1.5em;
+  justify-content: space-around;
+  text-align: center;
+  width: 5em;
+  margin-top: -10px;
+}
+
+.star-rating input {
+  display: none;
+}
+
+.star-rating label {
+  color: #ccc;
+  cursor: pointer;
+}
+
+.star-rating :checked ~ label {
+  color: #f90;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color: #fc0;
+}
+
+.addReview {
+  margin-left: 10px;
+}
+
+.submitReview {
+  background-color: transparent;
+  border: none;
+  color: green;
+  border: 1px solid green;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.submitReview:hover {
+  background-color: #1b2024;
+  opacity: 0.9;
+}
+
+.inputReview {
+  padding: 5px 8px 5px 8px;
+  border: none;
+  font-size: 16px;
+  border-bottom: 1px solid white;
+  background-color: rgb(35, 42, 51);
+  color: white;
+  width: 95%;
+}
+
+.inputReview:focus {
+  background-color: black;
+  border: none;
+  border-bottom: 1px solid white;
+}
+
+.castDiv {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.castBlock {
+  background-color: #455468;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  border-radius: 5px;
+}
+
+.castBlock:hover {
+  opacity: 0.9;
+}
+
+.ratingAns {
+  margin-top: -25px;
+  font-size: 24px;
+  color: gold;
+}
+
+.bottom-content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2.75fr;
+}
+
+.rightBottom {
+  width: 100%;
+}
+
+.reviewName {
+  padding-left: 10px;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.reviewAdd {
+  font-size: 20px;
+  opacity: 0.9;
+  margin-bottom: 3px;
+}
+
+.reviewN {
+  color: #628ebc;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.starsReview {
+  margin-left: 20px;
+  color: gold;
+}
+
+.reviewMain {
+  font-size: 20px;
+  padding-left: 10px;
+  opacity: 0.8;
+}
+
+.relFilms {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2%;
+  row-gap: 15px;
+}
+
+.relFilms img {
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.relFilms img:hover {
+  outline: 3px solid #628ebc;
+}
+
+.image {
+  display: flex;
+  align-items: center;
+}
+
+.inner-image {
+  background-image: url("../assets/interstellar_home.jpg");
+  background-repeat: no-repeat;
+  background-position: center -48px;
+  width: 1200px;
+  height: 512px;
+  box-shadow: 0 0 80px 100px #14181c inset;
+}
+
+@media screen and (max-width: 850px) {
+  .main {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .main {
+    width: 90%;
+  }
+
+  .moviename {
+    font-size: 28px;
+    line-height: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    border-bottom: 1px solid #455468;
+  }
+
+  .bottom-content {
+    grid-template-columns: 0fr 1fr;
+  }
+
+  ul {
+    position: absolute;
+    width: 90%;
+    height: calc(100vh - 71px);
+    background-color: #18283b;
+    left: 0;
+    top: 0;
+    text-align: center;
+    display: none;
+    margin-top: 71px;
+  }
+
+  ul li {
+    display: block;
+    padding: 10px 15px;
+  }
+
+  ul li a {
+    display: block;
+    padding: 10px 0;
+  }
+
+  #icon {
+    display: block;
+  }
+
+  #checkbox:checked ~ ul {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .main {
+    min-width: 95%;
+    padding: 0;
+    /* padding-left: 2%; */
+  }
+
+  .movieheading {
+    line-height: 30px;
+    font-size: 14px;
+  }
+
+  .moviename {
+    margin-bottom: -10px;
+  }
+
+  .year {
+    margin-bottom: -20px;
+  }
+
+  .content {
+    grid-template-columns: none;
+    grid-template-rows: 0.5fr 1fr 0.5fr;
+  }
+}
+
+td a {
+  color: white;
+  text-decoration: none;
+}
+
+td a:hover {
+  color: #628ebc;
+}
