@@ -62,7 +62,7 @@ app.get('/success', (req, res) => {
 })
 
 app.get('/bookingdetails', (req, res) => {
-    res.render('userDetails', {check: session.isLoggedIn})
+    res.render('bookingdetails', {check: session.isLoggedIn})
 })
 
 app.get('/faq', (req, res) => {
