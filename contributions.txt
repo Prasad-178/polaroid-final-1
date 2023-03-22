@@ -1,0 +1,41 @@
+Sec 2 Group 2
+Project Name - Polaroid
+Individual Contributions:
+
+
+1) Prasad Sankar S20210010182 - 
+   -> Database (using SQLite)
+   -> Express Server Setup and Routing
+   -> EJS View Engine
+   -> Film Page
+   -> User Profile Page
+   -> Navbar (Partial) (HTML + CSS)  
+   -> Lists Main Page (JS)
+
+2) Arka Mondal S20210010031-
+   -> Home Page 
+   -> Films List Page
+   -> Search Page
+   -> Signup Page
+   -> Booking Page(JS)
+   -> List Specific Page (JS)
+   -> Login Page (JS)	
+
+3) Bezawada Kalyan Chakravarthy S20210010040 -
+   -> 404 Not Found Page
+   -> FAQ Page
+   -> Settings Page
+   -> List Specific Page (HTML + CSS)
+
+4) Biswadip Maitra S20210010043 - 
+   -> Booking Page(HTML + CSS)
+   -> Booking Details Page
+   -> Payment Page
+   -> Success Page
+   -> Navbar (Partial) (JS)
+
+5) Urjasvi Suthar S20210010232 -  
+   -> Lists Main Page (HTML + CSS)
+   -> About Us Page
+   -> Footer (Partial)
+   -> Login Page (HTML + CSS)
