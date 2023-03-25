@@ -132,12 +132,18 @@ body {
   margin-bottom: 15px;
 }
 
+@media only screen and (max-width: 1226px) {
+  .feature-elements-container {
+    justify-content: space-around;
+  }
+}
+
 .element {
   display: flex;
   flex-direction: row;
   color: white;
   background-color: #445566;
-  width: 290px;
+  width: 328px;
   padding: 20px;
   border-radius: 5px;
   margin-bottom: 2.25%;

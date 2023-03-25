@@ -1,12 +1,14 @@
 <%- include('./partials/boilerplate') %>
 <%- include('./partials/nav', {check: check}) %>
+<title>Search</title>
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 <link rel="stylesheet" href="/css/nav.css">
-<link rel="stylesheet" href="/css/search.css" />
+<link rel="stylesheet" href="/css/search.css">
 <div class="main">
-  <div class="search-div">
-    <input type="search" class="search-box" placeholder="search anything" required autocomplete="off">
-    <button type="button" class="search-button">
-      <img src="/assets/magnifyingglass.png" class="search-img" alt="search-jpg">
+  <div class="search-box">
+    <input type="text" class="search-text-box" placeholder="Search Anything" autocomplete="off">
+    <button type="submit" class="search" id="search-button" onclick="toggleSearch()">
+      <i class="uil uil-search search-icon"></i>
     </button>
   </div>
   <div class="section-heading">found 2 matches for "avatar 2"</div>
@@ -42,3 +44,4 @@
   </div>
 </div>
 <%- include('./partials/footer.ejs') %>
+<script src="/scripts/search.js" charset="utf-8"></script>

@@ -38,7 +38,7 @@ router.post('/login', (req, res) => {
 
     // query to find user having a specific email
     const query = "select * from user where email=?"
-    
+
     db.get(query, email ,(err, row) => {
         console.log("row is : ", row)
         if (err) {
@@ -56,7 +56,7 @@ router.post('/login', (req, res) => {
                 res.render('login', { error: "The password you have entered is wrong!!" })
                 return
             }
-            
+
             // if password is correct
             res.status(200).redirect('/')
             console.log("Logged in successfully!")
@@ -67,7 +67,7 @@ router.post('/login', (req, res) => {
             session.username = row.username
         }
 
-        // if there is no user with the entered email 
+        // if there is no user with the entered email
         else {
             console.log("No such user exists!")
             res.render('login', { error: "No such user exists!" })
@@ -79,7 +79,7 @@ router.post('/login', (req, res) => {
 router.post('/register', (req, res) => {
     // getting email, username, and password from body of request
     const { email, username, password } = req.body
-    
+
     // if function is guaranteed to finish executing before the next one starts
     db.serialize(() => {
         // query to get user based on email
@@ -88,11 +88,11 @@ router.post('/register', (req, res) => {
             // if user is found with the email
             if (row) {
                 console.log(row)
-    
+
                 res.render('register', { error: "User with this email already exists!!" })
                 return
             }
-    
+
             if (err) {
                 console.log("..", err)
                 res.render('register', { error: "Internal server error!" })
@@ -132,17 +132,17 @@ router.post('/register', (req, res) => {
     })
 })
 
-router.post('/settings', (req, res) => {
+router.get('/sign-out', (req, res) => {
     console.log("Logged out!")
     session.isLoggedIn = false
     session.email = ""
     session.username = ""
 
-    res.redirect('/user/login')
+    res.redirect('/')
 })
 
 router.put('/settings', (req, res) => {
-    
+
 })
 
 module.exports = router

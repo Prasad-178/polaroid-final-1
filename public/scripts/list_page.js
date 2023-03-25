@@ -4,9 +4,9 @@ function multiplyNode(node, count, deep) {
       node.parentNode.insertBefore(copy, node);
     }
   }
-  
+
   multiplyNode(document.querySelector('.grid-img-container'), 48, true);
-  
+
   function changeGridLayout() {
     if (window.innerWidth >= 1100)
       document.getElementById('grid-container').style.gridTemplateColumns = "repeat(8, 1fr)";
@@ -19,7 +19,7 @@ function multiplyNode(node, count, deep) {
     else
       document.getElementById('grid-container').style.gridTemplateColumns = "repeat(1, 1fr)";
   }
-  
+
   window.addEventListener('resize', changeGridLayout);
-  
+
   document.addEventListener("DOMContentLoaded", changeGridLayout);

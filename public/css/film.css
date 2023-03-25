@@ -146,11 +146,15 @@ th {
 
 .share {
   color: white;
-  background-color: #455468;
+  background-color: #456;
   padding: 10px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.share:active {
+  transform: translateY(2.5px);
 }
 
 .bookTickets {
@@ -164,6 +168,10 @@ th {
 
 .sign-in:hover {
   opacity: 0.9;
+}
+
+.sign-in:active {
+  transform: translateY(2.5px);
 }
 
 .share:hover {
@@ -204,39 +212,34 @@ th {
 }
 
 .addReview {
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 
-.submitReview {
-  background-color: transparent;
-  border: none;
-  color: green;
-  border: 1px solid green;
-  padding: 10px;
-  margin-top: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.submitReview:hover {
-  background-color: #1b2024;
-  opacity: 0.9;
+.submitReview:active {
+  transform: translateY(1.5px);
+  /* transition: 0.1s; */
 }
 
 .inputReview {
-  padding: 5px 8px 5px 8px;
+  padding: 8px;
   border: none;
+  outline: none;
   font-size: 16px;
-  border-bottom: 1px solid white;
+  margin: 10px 0px;
   background-color: rgb(35, 42, 51);
   color: white;
   width: 95%;
+  border-radius: 8px;
+  transition: 0.4s;
+  font-size: 16px
 }
 
 .inputReview:focus {
-  background-color: black;
+  background-color: #456;
   border: none;
-  border-bottom: 1px solid white;
+  outline: none;
+  /* border-bottom: 1px solid white; */
+  transition: 0.4s;
 }
 
 .castDiv {
@@ -275,21 +278,33 @@ th {
 }
 
 .reviewName {
-  padding-left: 10px;
+  /* padding-left: 10px; */
   font-size: 16px;
   opacity: 0.9;
+  color: #678;
 }
 
 .reviewAdd {
+  padding: 7px 0px;
   font-size: 20px;
   opacity: 0.9;
-  margin-bottom: 3px;
+  /* border-top: 1px solid #445566; */
+  border-bottom: 1px solid #445566;
+  margin-bottom: 10px;
+  color: #9ab;
 }
 
 .reviewN {
-  color: #628ebc;
+  color: #bcd;
   font-weight: 600;
   cursor: pointer;
+  margin-left: 5px;
+  transition: 0.4s;
+}
+
+.reviewN:hover {
+  color: whitesmoke;
+  transition: 0.4s;
 }
 
 .starsReview {
@@ -299,7 +314,7 @@ th {
 
 .reviewMain {
   font-size: 20px;
-  padding-left: 10px;
+  color: #a3d4ec;
   opacity: 0.8;
 }
 
@@ -312,12 +327,14 @@ th {
 }
 
 .relFilms img {
-  border-radius: 15px;
+  border-radius: 8px;
   cursor: pointer;
+  /* transition: 0.4s; */
 }
 
 .relFilms img:hover {
-  outline: 3px solid #628ebc;
+  outline: 3px solid #9ab;
+  transition: 0.1s;
 }
 
 .image {
