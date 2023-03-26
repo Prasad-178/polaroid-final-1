@@ -1,3 +1,4 @@
+
 body {
   min-height: 100vh;
   background-color: #14181c;
@@ -13,35 +14,38 @@ body {
   margin: 2% 20% 2% 20%;
 }
 
-.card-group {
+.list-card-group {
   display: grid;
   gap: 20px 10px;
 }
 
-.card {
+.list-card {
   background-color: #14181c;
   border: 1px solid #456;
-  border-radius: 0.375rem;
+  border-radius: 8px;
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
   width: 180px;
 }
 
-.card > a {
+.list-card > a {
   color: whitesmoke;
   text-decoration: none;
 }
 
 .img-container > img {
-  width: 180px;
+  width: 100%;
   height: auto;
   border-radius: 8px 8px 0px 0px;
   border-bottom: 2px solid #456;
 }
 
-.card:hover {
+.list-card:hover {
   border: 1px solid whitesmoke;
 }
 
-.container {
+.description-container {
   padding: 8px 8px;
   font-size: 16px;
 }
@@ -50,16 +54,20 @@ body {
   color: whitesmoke;
 }
 
-.btn {
+.more-btn {
   border: 1px solid #456;
   color: whitesmoke;
   padding: 8px;
   text-decoration: none;
   border-radius: 5px;
   transition: 0.4s;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.btn:hover {
+.more-btn:hover {
   border: 1px solid whitesmoke;
   background-color: whitesmoke;
   color: black;
@@ -83,7 +91,14 @@ body {
   font-size: 22px;
 }
 
-.section-description {
+.description-header {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #456;
+}
+
+.description-content {
+  margin: 5px 0px;
+  color: #789;
 }

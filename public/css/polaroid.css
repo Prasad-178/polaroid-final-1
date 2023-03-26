@@ -143,7 +143,8 @@ body {
   flex-direction: row;
   color: white;
   background-color: #445566;
-  width: 328px;
+  width: 330px;
+  height: 120px;
   padding: 20px;
   border-radius: 5px;
   margin-bottom: 2.25%;
@@ -152,10 +153,17 @@ body {
 
 .element-icon {
   margin-right: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.element-icon > img {
-  width: 60px;
+.elementfeature-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .element1:hover {

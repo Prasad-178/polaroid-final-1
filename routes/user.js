@@ -30,6 +30,22 @@ router.get('/settings', (req, res) => {
     res.render('settings', {check: true, email: session.email, username: session.username})
 })
 
+router.get('/watchedfilms', (req, res) => {
+    if (!session.isLoggedIn) {
+        res.redirect('login')
+        return
+    }
+    res.render('watched_films', {check: true})
+})
+
+router.get('/list', (req, res) => {
+    if (!session.isLoggedIn) {
+        res.redirect('login')
+        return
+    }
+    res.render('user_list', {check: true})
+})
+
 //post request on login page
 router.post('/login', (req, res) => {
     //getting email and password from body of request
