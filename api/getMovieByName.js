@@ -36,4 +36,4 @@ const getMovieDetails = async (Ids) => {
     // return arr
 }
 
-module.exports = {getMovieByName}
+module.exports = getMovieByName

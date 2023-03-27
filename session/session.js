@@ -1,8 +1,7 @@
-// session stored in variable
-let session = {
+const session = {
     isLoggedIn: false,
-    email: "",
-    username: ""
+    username: "",
+    email: ""
 }
 
 module.exports = session

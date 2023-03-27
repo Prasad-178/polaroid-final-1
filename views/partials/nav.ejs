@@ -23,7 +23,12 @@
     <li><a href="/" id="home">Home</a></li>
     <li><a href="/films" id="films">Films</a></li>
     <li><a href="/lists" id="lists">Lists</a></li>
-    <li><a href="/user/login" id="settings"> <%= !check ? "Sign In" : "Settings" %> </a></li>
+    <% if (check) { %>
+      <li><a href="/user/settings" id="settings"> Settings </a></li>
+    <% } %>
+    <% if (!check) { %>
+      <li><a href="/user/login" id="settings"> Sign In </a></li>
+    <% } %>
     <li id="searchButtonLi">
       <a href="/search">
         <button id="searchButton">

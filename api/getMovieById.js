@@ -8,4 +8,4 @@ const getMovieById = async (id) => {
     return movieDetails.data
 }
 
-module.exports = {getMovieById}
+module.exports = getMovieById

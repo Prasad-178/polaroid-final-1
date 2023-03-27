@@ -16,7 +16,7 @@ body {
     padding-left: 2%;
     padding-right: 2%;
     font-family: 'Dosis';
-    font-size: 28px;
+    /* font-size: 28px; */
     opacity: 0.8;
 }
 
@@ -36,47 +36,6 @@ body {
     font-size: 17px;
 }
 
-.leftSide {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    gap: 5px;
-}
-
-.leftSide input {
-    padding: 5px 8px 5px 8px;
-    border: none;
-    height: 22px;
-    border-bottom: 1px solid white;
-    background-color: rgb(35, 42, 51);
-    color: white;
-}
-
-.leftSide input:focus {
-    background-color: black;
-    border: none;
-    border-bottom: 1px solid white;
-}
-
-.leftSide textarea {
-    padding: 5px 8px 5px 8px;
-    background-color: rgb(35, 42, 51);
-    color: white;
-    border: none;
-    border-bottom: 1px solid white;
-    margin-bottom: 30px;
-    font-size: 15px;
-}
-
-.leftSide textarea:focus {
-    background-color: black;
-    border: none;
-    border-bottom: 1px solid white;
-}
-
-.leftSide label {
-    margin-top: 10px;
-}
 
 .rightSide {
     display: flex;
@@ -97,6 +56,103 @@ body {
     gap: 5%;
     font-weight: 600;
     letter-spacing: 0px;
+}
+
+.buttons-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.deactive-buttons-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.label-input {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 18px;
+  transition: 0.4s;
+
+}
+
+.label-input:hover {
+  color: #40bcf4;
+  transition: 0.4s;
+}
+
+.input-field {
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+  background-color: #456;
+  color: white;
+  font-size: 18px;
+  transition: 0.4s;
+}
+
+#email {
+  color: #9ab;
+}
+
+.input-field:focus, .input-field-textarea:focus {
+  background-color: #789;
+  transition: 0.4s;
+}
+
+.input-field-textarea {
+  display: block;
+  width: 100%;
+  height: 220px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+  background-color: #456;
+  color: white;
+  font-size: 18px;
+  transition: 0.4s;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.section-header {
+  font-size: 20px;
+  color: whitesmoke;
+  border-bottom: 1px solid #456;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.settings-header {
+  font-size: 24px;
+  color: whitesmoke;
+  border-bottom: 1px solid #456;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .rightFavs div {
@@ -120,23 +176,6 @@ body {
     justify-self: flex-end;
 }
 
-.deleteAccount {
-    background-color: transparent;
-    color: red;
-    border: 1px solid red;
-    padding: 10px;
-    width: 40%;
-    text-align: center;
-    font-size: 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 5px;
-    font-weight: 550;
-}
-
-.deleteAccount:hover {
-    opacity: 0.9;
-}
 
 .submitButton {
     width: 50%;
@@ -182,7 +221,7 @@ body {
     .leftSide {
         width: 65%;
     }
-    
+
     .rightSide {
         width: 100%;
     }

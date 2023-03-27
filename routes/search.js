@@ -6,6 +6,6 @@ router.get('/', (req, res) => {
     res.render('search', {check: session.isLoggedIn})
 })
 
-// router.post()
+
 
 module.exports = router

@@ -1,148 +1,38 @@
 const { Router } = require('express')
-const router = Router()
-const db = require('../database/create')
+const login = require('../controllers/user/login')
+const logout = require('../controllers/user/logout')
+const register = require('../controllers/user/register')
+const appendToList = require('../controllers/list/appendItemToList')
+const createList = require('../controllers/list/createList')
+const verifyToken = require('../middleware/verifyToken')
 const session = require('../session/session')
+const router = Router()
 
-// get request on /login
 router.get('/login', (req, res) => {
-    if (session.isLoggedIn===true) {
-        res.redirect('settings')
-        return
-    }
-    res.render('login', {error: ""})
+    res.render('login', { error: "" })
 })
 
-// get request on /register
 router.get('/register', (req, res) => {
-    if (session.isLoggedIn===true) {
-        res.redirect('settings')
-        return
-    }
-    res.render('register', {error: ""})
+    res.render('register', { error: "" })
 })
 
-// get request on /settings
+router.post('/login', login)
+
+router.post('/register', register)
+
+router.post('/createlist', createList)
+
+router.post('/addtolist', appendToList)
+
 router.get('/settings', (req, res) => {
     if (!session.isLoggedIn) {
-        res.redirect('login')
+        res.redirect('/user/login')
         return
     }
-    res.render('settings', {check: true, email: session.email, username: session.username})
+    res.render('settings', { check: session.isLoggedIn, username: session.username, email: session.email })
+    console.log(session)
 })
 
-//post request on login page
-router.post('/login', (req, res) => {
-    //getting email and password from body of request
-    const { email, password } = req.body
-    // console.log(req.body)
-
-    // query to find user having a specific email
-    const query = "select * from user where email=?"
-    
-    db.get(query, email ,(err, row) => {
-        console.log("row is : ", row)
-        if (err) {
-            res.render('login', { error: "Internal server error!" })
-            return
-        }
-
-        // if there is a user with email
-        if (row) {
-            console.log(row)
-
-            // if password in db is different from entered password
-            if (row.password !== password) {
-                console.log("wrong password!")
-                res.render('login', { error: "The password you have entered is wrong!!" })
-                return
-            }
-            
-            // if password is correct
-            res.status(200).redirect('/')
-            console.log("Logged in successfully!")
-
-            // setting session variables
-            session.email = email
-            session.isLoggedIn = true
-            session.username = row.username
-        }
-
-        // if there is no user with the entered email 
-        else {
-            console.log("No such user exists!")
-            res.render('login', { error: "No such user exists!" })
-        }
-    })
-})
-
-// post request in register page
-router.post('/register', (req, res) => {
-    // getting email, username, and password from body of request
-    const { email, username, password } = req.body
-    
-    // if function is guaranteed to finish executing before the next one starts
-    db.serialize(() => {
-        // query to get user based on email
-        const query = "select * from user where email=?"
-        db.get(query, email, (err, row) => {
-            // if user is found with the email
-            if (row) {
-                console.log(row)
-    
-                res.render('register', { error: "User with this email already exists!!" })
-                return
-            }
-    
-            if (err) {
-                console.log("..", err)
-                res.render('register', { error: "Internal server error!" })
-                return
-            }
-
-            // query to find a user based on his username
-            const query2 = "select * from user where username=?"
-            db.get(query2, username, (err, row) => {
-                // if such a user exists
-                if (row) {
-                    res.render('register', { error: "User with this username already exists!!" })
-                    return
-                }
-
-                if (err) {
-                    console.log("ggg", err)
-                    res.render('register', { error: "Internal server error!" })
-                    return
-                }
-
-                // creating the user in the database
-                const post = "insert into user (email, username, bio, password) values (?, ?, ' ', ?)"
-                db.run(post, [email, username, password], (err, row) => {
-                    if (err) {
-                        console.log("kek", err)
-                        res.render('register', { error: "Internal server error!" })
-                        return
-                    }
-
-                    // if no error then success!
-                    console.log("Added successfully!")
-                    res.redirect('/user/login')
-                })
-            })
-        })
-    })
-})
-
-router.post('/settings', (req, res) => {
-    console.log("Logged out!")
-    session.isLoggedIn = false
-    session.email = ""
-    session.username = ""
-
-    res.redirect('/user/login')
-})
-
-router.put('/settings', (req, res) => {
-    
-})
+router.post('/logout', logout)
 
 module.exports = router
