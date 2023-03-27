@@ -45,16 +45,17 @@ function onFocusoutPass() {
   document.getElementById("password-input").style.backgroundColor = "#a3d4ec";
 }
 
-document
-  .getElementById("email-input")
-  .addEventListener("focusin", onFocusinEmail);
-document
-  .getElementById("email-input")
-  .addEventListener("focusout", onFocusoutEmail);
+function disableButton() {
+  if (isInvalidEmail) {
+    document.getElementById('submit-button').disabled = true;
+  }
+  else {
+    document.getElementById('submit-button').disabled = false;
+  }
+}
 
-document
-  .getElementById("password-input")
-  .addEventListener("focusin", onFocusinPass);
-document
-  .getElementById("password-input")
-  .addEventListener("focusout", onFocusoutPass);
+document.getElementById("email-input").addEventListener("focusin", onFocusinEmail);
+document.getElementById("email-input").addEventListener("focusout", onFocusoutEmail);
+
+document.getElementById("password-input").addEventListener("focusin", onFocusinPass);
+document.getElementById("password-input").addEventListener("focusout", onFocusoutPass);

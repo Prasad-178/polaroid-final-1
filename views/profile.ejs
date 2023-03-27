@@ -1,51 +1,111 @@
 <%- include('./partials/boilerplate.ejs') %>
 <%- include('./partials/nav.ejs', {check: check}) %>
-<title>Document</title>
+<title>Profile</title>
 <link rel="stylesheet" href="/css/profile.css">
 <div class="main">
-    <div class="top">
-        <div class="topLeft">
-            <img src="/assets/cat.jpg" height="100px" class="dp">
-            <div class="topLeftRight">
-                <p class="username">ChocolateFrog18</p>
-                <button class="followButton">FOLLOW</button>
-            </div>
-        </div>
-        <div class="topRight">
-            <div class="topRightComponent">
-                <p class="numberComp">314</p>
-                <p class="nameComp">FILMS</p>
-            </div>
-            <div class="topRightComponent">
-                <p class="numberComp">0</p>
-                <p class="nameComp">LISTS</p>
-            </div>
-            <div class="topRightComponent">
-                <p class="numberComp">3</p>
-                <p class="nameComp">FOLLOWING</p>
-            </div>
-            <div class="topRightComponent">
-                <p class="numberComp">2</p>
-                <p class="nameComp">FOLLOWERS</p>
-            </div>
-        </div>
+  <div class="profile-header">
+    <div class="profile-data">
+      <img src="/assets/cat.jpg" height="100px" class="dp">
+      <div class="profile-metadata">
+          <div class="profile-name">ChocolateFrog18</div>
+          <button class="followButton">FOLLOW</button>
+      </div>
     </div>
-    <div class="bottom">
-        <p class="favFilmsHead">FAVOURITE FILMS</p>
-        <div class="favFilms">
-            <img onclick="location.href='/film'" src="/assets/filmimg.jpg">
-            <img onclick="location.href='/film'" src="/assets/filmimg.jpg">
-            <img onclick="location.href='/film'" src="/assets/filmimg.jpg">
-            <img onclick="location.href='/film'" src="/assets/filmimg.jpg">
-        </div>
-        <p class="favFilmsHead">RECENTLY WATCHED</p>
-        <div class="favFilms">
-            <img onclick="location.href='/film'" src="/assets/filmimg.jpg">
-            <img onclick="location.href='/film'" src="/assets/filmimg.jpg">
-            <img onclick="location.href='/film'" src="/assets/filmimg.jpg">
-            <img onclick="location.href='/film'" src="/assets/filmimg.jpg">
-        </div>
+    <div class="profile-social-metadata">
+      <div class="social-component">
+          <div class="social-component-counter">314</div>
+          <a href="#" class="social-component-name">films</a>
+      </div>
+      <div class="social-component">
+          <div class="social-component-counter">0</div>
+          <a href="#" class="social-component-name">lists</a>
+      </div>
+      <div class="social-component">
+          <div class="social-component-counter">3</div>
+          <a href="#" class="social-component-name">following</a>
+      </div>
+      <div class="social-component">
+          <div class="social-component-counter">2</div>
+          <a href="#" class="social-component-name">followers</a>
+      </div>
     </div>
+  </div>
+  <div class="select-section">
+    <div class="nav-link">
+      <a href="/profile" class="section-name  active">profile</a>
+    </div>
+    <div class="nav-link">
+      <a href="/user/watchedfilms" class="section-name">watched films</a>
+    </div>
+    <div class="nav-link">
+      <a href="/user/reviews" class="section-name">reviews</a>
+    </div>
+    <div class="nav-link">
+      <a href="/user/watchlist" class="section-name">watchlist</a>
+    </div>
+    <div class="nav-link">
+      <a href="/user/list" class="section-name">list</a>
+    </div>
+    <div class="nav-link">
+      <a href="/user/network" class="section-name">network</a>
+    </div>
+  </div>
+
+  <div class="section-heading">favorite films</div>
+  <div class="grid-container">
+    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/list_image.jpg" alt="image"></div>
+    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/list_image.jpg" alt="image"></div>
+    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/list_image.jpg" alt="image"></div>
+    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/list_image.jpg" alt="image"></div>
+    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/list_image.jpg" alt="image"></div>
+    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/list_image.jpg" alt="image"></div>
+    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/list_image.jpg" alt="image"></div>
+  </div>
+
+  <div class="section-heading">recently watched</div>
+  <div class="grid-container">
+    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
+    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
+    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
+    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
+    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
+    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
+    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
+  </div>
+
+
+  <div class="section-heading">
+    <div>recent reviews</div>
+    <a href="/films">more</a>
+  </div>
+  <div class="element-container">
+    <div class="film-image-container">
+      <img class="film-image" src="/assets/filmimg.jpg" alt="image">
+    </div>
+    <div class="film-content">
+      <div class="film-header">
+        <a class="film-name" href="/film">Avatar: The Way of Water</a>
+        <div class="film-year">2022</div>
+      </div>
+      <div class="film-review">
+        All time best movie
+      </div>
+    </div>
+  </div>
+  <div class="element-container">
+    <div class="film-image-container">
+      <img class="film-image" src="/assets/list_image.jpg" alt="image">
+    </div>
+    <div class="film-content">
+      <div class="film-header">
+        <a class="film-name" href="/film">Maggie</a>
+        <div class="film-year">2015</div>
+      </div>
+      <div class="film-review">
+        All time best movie
+      </div>
+    </div>
+  </div>
 </div>
-    
+
 <%- include('./partials/footer.ejs') %>

@@ -1,0 +1,20 @@
+<%- include('./partials/boilerplate.ejs') %>
+<%- include('./partials/nav.ejs', {check: check}) %>
+<link rel="stylesheet" href="/css/watched_films.css">
+<title>Watched Films</title>
+<div class="main">
+    <div class="header">
+        <div>watched films</div>
+        <label class="switch">
+            <input type="checkbox" class="grid-num-control" autocomplete="off" onclick="changeGridLayout()"
+                id="grid-checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <!-- <div class="header-bar">There are 789,912 films</div> -->
+    <div class="grid-container" id="grid-container">
+        <div class="grid-img-container"><img class="grid-img" onclick="location.href='/film'" src="/assets/list_image.jpg" alt="image"></div>
+    </div>
+</div>
+<script src="/scripts/watched_films.js" charset="utf-8"></script>
+<%- include('./partials/footer.ejs') %>

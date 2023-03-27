@@ -1,0 +1,75 @@
+<%- include('./partials/boilerplate.ejs') %>
+<%- include('./partials/nav.ejs', {check: check}) %>
+<link rel="stylesheet" href="/css/user_list.css">
+<title>{User-Name}'s List</title>
+  <div class="main">
+    <div class="list-adder-section">
+      <button type="button" class="btn btn-outline-warning button-adder" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <div class="button-desc">Create a New List</div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="section-heading">My Lists</div>
+
+    <div class="list-contents">
+      <div class="element-container">
+        <div class="list-image-container">
+          <img class="list-image" onclick="location.href='/listpage'" src="/assets/list_image.jpg" alt="image">
+        </div>
+        <div class="list-content">
+          <div class="list-metadata">
+            <div class="list-header">
+              <div class="mylist-name">Top Horror Movies</div>
+            </div>
+            <button type="button" class="delete-button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="grey" class="bi bi-trash-fill" viewBox="0 0 16 16" opacity="0.8">
+                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="list-desc">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          </div>
+          <div class="list-creation">
+            Created on
+            <div class="list-date">12-03-2023</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content list-adder-dialog">
+        <form>
+          <div class="new-list-header">
+            <div class="modal-title" id="staticBackdropLabel">Create a New List</div>
+          </div>
+          <div class="new-list-body">
+            <label class ="new-list-input-label" for="new-list-name">Enter the list name</label>
+            <input class="new-list-input" type="text" id="new-list-name" placeholder="List name" autocomplete="off" required>
+
+            <label class ="new-list-input-label" for="new-list-description">Enter the list description</label>
+            <textarea class="new-list-textarea" type="text" id="new-list-description" placeholder="List description" autocomplete="off" required></textarea>
+          </div>
+
+
+          <div class="modal-footer" style="border: none;">
+            <!-- Instructions for the implementation -->
+            <!--
+            > Change the onclick to onsubmit
+            > createList() creates the object
+            -->
+            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Discard</button>
+            <button type="button" class="btn btn-outline-success" onclick="createList()">Create</button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="/scripts/user_list.js" charset="utf-8"></script>
+<%- include('./partials/footer.ejs') %>
