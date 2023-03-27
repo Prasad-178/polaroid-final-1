@@ -33,6 +33,22 @@ router.get('/settings', (req, res) => {
     console.log(session)
 })
 
+router.get('/watchedfilms', (req, res) => {
+    if (!session.isLoggedIn) {
+        res.redirect('login')
+        return
+    }
+    res.render('watched_films', {check: true})
+})
+
+router.get('/list', (req, res) => {
+    if (!session.isLoggedIn) {
+        res.redirect('login')
+        return
+    }
+    res.render('user_list', {check: true})
+})
+
 router.post('/logout', logout)
 
 module.exports = router

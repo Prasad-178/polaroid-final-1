@@ -1,4 +1,5 @@
 <%- include('./partials/boilerplate.ejs') %>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
   <%- include('./partials/nav.ejs', {check: check}) %>
     <link rel="stylesheet" href="/css/film.css">
     <title>Film Name</title>
@@ -118,13 +119,7 @@
             Never gonna forget the raucous cheer in the theater when Alec Baldwin says “Ethan Hunt is the living
             manifestation of destiny.” Absolutely love them letting Cruise play it a little dazed after the underwater
             mission, and absolutely absolutely love that the big sequence they marketed the movie with, is the very
-            first thing we see. The final resolution to this movie isn't even a set piece or anything, it's just talking
-            and then running, and it still works. Ballsy!
-
-            Rebecca Ferguson is one of the best adrenaline shots this franchise has received and I hope her returning
-            means she's being treated better than the other women in this franchise seem to have been! This one is a
-            small dip between the two franchise highs but any other franchise would kill to have this be considered a
-            "dip"
+            first thing we see.
           </p>
           <div class="addReview">
             <p class="reviewAdd">Add your review: </p>
@@ -140,8 +135,8 @@
               <input type="radio" id="1-star" name="rating" value="1" />
               <label for="1-star" class="star">&#9733;</label>
             </div>
-            <textarea rows="7" class="inputReview"></textarea>
-            <button class="submitReview">Submit Review</button>
+            <textarea rows="7" class="inputReview" required autocomplete="off"></textarea>
+            <button type="submit" class="submitReview btn btn-outline-success">Submit Review</button>
           </div>
         </div>
       </div>
