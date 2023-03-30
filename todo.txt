@@ -9,7 +9,13 @@ email verification (page)
   -> submit button
   -> (update the user model)
 
-settings page backend + regex
+settings page backend
+settings regex - DONE
+
+> instructions for prasad
+  -> check if the old password matches with the given record
+  -> check if the old password doesn't match with the new password
+  -> throw error if old password is not empty and new password is empty
 
 add to list/favourites/watchlist/watched (dropdown inside film page)
 
@@ -37,11 +43,11 @@ many backend bugs (idk how to fix right now)
 change image of list which does not have anything
 
 
-make profile page dynamic 
+make profile page dynamic
   -> remove follow button from your own profile page
   -> maximum 6/7/8 favourites
   -> recent reviews is optional
-  -> remove more button from recent reviews
+  -> remove more button from recent reviews - DONE
 
 allow us to see others profile
 
@@ -49,11 +55,11 @@ network (followers, following)
 
 implement logout in backend and connect it to frontend
 
-remove reviews section in navbar
+remove reviews section in navbar - DONE
 
 add youtube logo in trailer in film page/remove trailer button
 
-add proper title to all pages
+add proper title to all pages - DONE
 
 change lgbtq logo everywhere
 

@@ -16,7 +16,3 @@ if (window.location.href == url+'/lists') {
     console.log("lists")
     document.getElementById("lists").classList.add("active")
 }
-
-if (window.location.href == url+'/user/settings') {
-    document.getElementById("settings").classList.add("active")
-}
