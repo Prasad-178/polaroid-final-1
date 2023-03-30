@@ -24,22 +24,17 @@ router.post("/login", login);
 
 router.post("/register", register);
 
-router.post("/createlist", createList);
+router.get('/watchlist', (req, res) => {
+    res.render('watchlist', {check: true, username: session.username, email: session.email})
+})
 
 router.post("/addtolist", appendToList);
 
-router.get("/settings", (req, res) => {
-  if (!session.isLoggedIn) {
-    res.redirect("/user/login");
-    return;
-  }
-  res.render("settings", {
-    check: session.isLoggedIn,
-    username: session.username,
-    email: session.email,
-  });
-  console.log(session);
-});
+//     // query to find user having a specific email
+//     const query = "select * from user where email=?"
+
+//   res.redirect("/user/list");
+// });
 
 router.get("/list/:listName", async (req, res) => {
   let listName = req.params.listName;
@@ -60,10 +55,6 @@ router.get("/list/:listName", async (req, res) => {
 });
 
 router.get("/watchedfilms", (req, res) => {
-  if (!session.isLoggedIn) {
-    res.redirect("login");
-    return;
-  }
   res.render("watched_films", {
     check: true,
     username: session.username,

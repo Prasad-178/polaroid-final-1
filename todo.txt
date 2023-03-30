@@ -46,3 +46,15 @@ make profile page dynamic
 allow us to see others profile
 
 network (followers, following)
+
+implement logout in backend and connect it to frontend
+
+remove reviews section in navbar
+
+add youtube logo in trailer in film page/remove trailer button
+
+add proper title to all pages
+
+change lgbtq logo everywhere
+
+add "no results found" to search page
