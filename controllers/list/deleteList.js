@@ -2,9 +2,7 @@ const list = require("../../models/list")
 const user = require("../../models/user")
 const session = require("../../session/session")
 
-const deleteList = async (req, res) => {
-    const { listName } = req.body
-
+const deleteList = async (listName) => {
     let existingList
     try {
         existingList = await list.findOne({ createdBy: session.username, listName: listName }).exec()

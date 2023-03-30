@@ -18,15 +18,30 @@ const UserSchema = new schema({
         required: true,
     },
     favourites: {
-        type: [String],
+        type: [
+            {
+                id: String,
+                poster_path: String
+            }
+        ],
         required: false
     },
     watched: {
-        type: [String],
+        type: [
+            {
+                id: String,
+                poster_path: String
+            }
+        ],
         required: false
     },
     planToWatch: {
-        type: [String],
+        type: [
+            {
+                id: String,
+                poster_path: String
+            }
+        ],
         required: false
     },
     followers: {

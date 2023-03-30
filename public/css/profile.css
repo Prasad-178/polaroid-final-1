@@ -254,7 +254,7 @@ body {
 
 
 .followButton {
-    width: 50%;
+    /* width: 50%; */
     background-color: rgb(68, 82, 95);
     font-size: 12px;
     font-weight: 600;
@@ -264,6 +264,7 @@ body {
     padding: 5px;
     border-radius: 5px;
     color: white;
+    max-width: 70px;
 }
 
 .followButton:hover {

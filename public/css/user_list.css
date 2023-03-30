@@ -169,6 +169,7 @@ body {
   font-size: 1.6930769rem;
   margin-right: 8px;
   justify-content: flex-end;
+  cursor: pointer;
 }
 
 .list-creation {
@@ -201,4 +202,9 @@ body {
 
 .mylist-name:hover {
   color: #40bcf4;
+}
+
+.noLists {
+  color: red;
+  font-size: 20px;
 }

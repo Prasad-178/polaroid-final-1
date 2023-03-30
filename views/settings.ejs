@@ -1,5 +1,5 @@
 <%- include('./partials/boilerplate.ejs') %>
-  <%- include('./partials/nav.ejs', {check: check}) %>
+  <%- include('./partials/nav.ejs', {check: check, username: username, email: email}) %>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/settings.css" />
     <title>Settings</title>
@@ -43,33 +43,7 @@
               </svg>
             </button>
           </div>
-<<<<<<< HEAD
-          Watchlist
-          <div class="rightFavs">
-            <div onclick="location.href='/film'"><img
-                src="https://media.outnow.ch/Movies/News/2015/06/25/Neues-Poster-zu-Mission-Impossible-Rogue-Nation/f001.jpg">
-            </div>
-            <div onclick="location.href='/film'"><img
-                src="https://media.outnow.ch/Movies/News/2015/06/25/Neues-Poster-zu-Mission-Impossible-Rogue-Nation/f001.jpg">
-            </div>
-            <div onclick="location.href='/film'"><img
-                src="https://media.outnow.ch/Movies/News/2015/06/25/Neues-Poster-zu-Mission-Impossible-Rogue-Nation/f001.jpg">
-            </div>
-            <div onclick="location.href='/film'"><img
-                src="https://media.outnow.ch/Movies/News/2015/06/25/Neues-Poster-zu-Mission-Impossible-Rogue-Nation/f001.jpg">
-            </div>
-          </div>
-          <form action="/user/delete" method="post" class="deacForm">
-            <button class="deleteAccount" type="submit">DEACTIVATE ACCOUNT</button>
-          </form>
         </div>
       </div>
-      <form action="/user/logout" method="post">
-        <button class="logoutButton" type="submit">SIGN OUT</button>
-      </form>
-=======
-        </div>
-      </div>
->>>>>>> dabdb73a21443099710c8d8e501019ab676d56f5
     </div>
     <%- include('./partials/footer.ejs') %>

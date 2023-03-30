@@ -2,8 +2,9 @@ const List = require('../../models/list')
 const session = require('../../session/session')
 
 const createList = async (req, res) => {
-    const { listName, description, image } = req.body
+    const { listName, description } = req.body
     const createdBy = session.username
+    const createdAt = new Date(Date.now())
 
     let existingList
     try {
@@ -22,7 +23,7 @@ const createList = async (req, res) => {
         listName: listName,
         description: description,
         createdBy: createdBy,
-        image: image,
+        createdAt: createdAt,
         items: []
     })
 
@@ -33,7 +34,7 @@ const createList = async (req, res) => {
         return
     }
 
-    return
+    res.redirect('/user/list')
 }
 
 module.exports = createList

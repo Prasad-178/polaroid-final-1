@@ -1,27 +1,43 @@
 <%- include('./partials/boilerplate.ejs') %>
-<%- include('./partials/nav.ejs', {check: check}) %>
+<%- include('./partials/nav.ejs', {check: check, username: username, email: email}) %>
 <title>List</title>
 <link rel="stylesheet" href="/css/list_page.css">
 <div class="main">
   <div class="meta-data">
     <div class="div-classifier">
-      editor's choice
+      <%= heading %>
     </div>
     <div class="div-time-since-update">
-      Updated 19h ago
+      <%= time %>
     </div>
     <div class="div-list-tagline">
-      For when you don't know what to watch
+      <%= listHeading %>
     </div>
     <div class="div-list-description">
-      It is hard to pick a film to watch.<br>
-      Movies are handpicked by our editors.<br>
+      <% if (isTrending===true) { %>
+      Discover the top, most popular movies available now!<br>
+      Across theaters, streaming, and on-demand, these are the movies Polaroid users are checking out at this very moment.<br>
       We hope you will enjoy your time watching the movies.
+      <% } %>
+      <% if (isTrending===false) { %>
+      <%= data.description %>
+      <% } %>
     </div>
   </div>
-    <div class="grid-container" id="grid-container">
-      <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/list_image.jpg" alt="image"></div>
-    </div>
+  <% if (isTrending===true) { %>
+  <div class="grid-container" id="grid-container">
+    <% for (let index=0; index < data.results.length; index++) { %>
+    <div class="grid-img-container"> <a href=<%= "/film/"+data.results[index].id %>> <img class="grid-img" src=<%= "https://image.tmdb.org/t/p/original"+data.results[index].poster_path %> alt="image"> </a></div>
+    <% } %>
+  </div>
+  <% } %>
+  <% if (isTrending===false) { %>
+  <div class="grid-container" id="grid-container">
+    <% for (let index=0; index < data.items.length; index++) { %>
+    <div class="grid-img-container"> <a href=<%= "/film/"+data.items[index].id %>> <img class="grid-img" src=<%= "https://image.tmdb.org/t/p/original"+data.items[index].poster_path %> alt="image"> </a></div>
+    <% } %>
+  </div>
+  <% } %>
 </div>
 <script src="/scripts/list_page.js" charset="utf-8"></script>
 <%- include('./partials/footer.ejs') %>

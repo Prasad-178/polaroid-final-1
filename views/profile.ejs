@@ -1,5 +1,5 @@
 <%- include('./partials/boilerplate.ejs') %>
-<%- include('./partials/nav.ejs', {check: check}) %>
+<%- include('./partials/nav.ejs', {check: check, username: username, email: email}) %>
 <title>Profile</title>
 <link rel="stylesheet" href="/css/profile.css">
 <div class="main">
@@ -7,7 +7,7 @@
     <div class="profile-data">
       <img src="/assets/cat.jpg" height="100px" class="dp">
       <div class="profile-metadata">
-          <div class="profile-name">ChocolateFrog18</div>
+          <div class="profile-name"> <%= username %> </div>
           <button class="followButton">FOLLOW</button>
       </div>
     </div>

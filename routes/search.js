@@ -1,11 +1,30 @@
-const { Router } = require('express')
-const router = Router()
-const session = require('../session/session')
+const { Router } = require("express");
+const getMovieByName = require("../api/getMovieByName");
+const router = Router();
+const session = require("../session/session");
 
-router.get('/', (req, res) => {
-    res.render('search', {check: session.isLoggedIn})
-})
+router.get("/", async (req, res) => {
+  res.render("search", {
+    check: session.isLoggedIn,
+    username: session.username,
+    email: session.email,
+    data: {
+      results: []
+    },
+    name: ""
+  });
+});
 
+router.post("/", async (req, res) => {
+  const data = await getMovieByName(req.body.name);
+  console.log(data)
+  res.render("search", {
+    check: session.isLoggedIn,
+    username: session.username,
+    email: session.email,
+    data: data,
+    name: req.body.name
+  });
+});
 
-
-module.exports = router
+module.exports = router;

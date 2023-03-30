@@ -18,11 +18,17 @@
     <div class="top-text-div">
       The social network for film lovers.
       <% if (check===false) { %>
-        Alreay a memeber ? <a href="/user/login">Sign in</a>
+        Already a memeber ? <a href="/user/login">Sign in</a>
       <% } %>
     </div>
     <div class="grid-container1" id="header-list">
-      <div class="grid-img-container1"><img onclick="location.href='/film'" class="grid-img1" src="/assets/filmimg.jpg" alt="image"></div>
+      <% for( let index = 0; index < 6; index++ ) { %>
+        <script>
+          var href = '<%- JSON.stringify(results) %>'
+          console.log(href)
+        </script>
+        <div class="grid-img-container1"> <a href= <%= "/film/" + results[index].id %>  > <img class="grid-img1" src=<%= "https://image.tmdb.org/t/p/original/" + results[index].poster_path %> alt="image"> </a> </div>
+      <% } %>
     </div>
 
     <div class="feature-container">
@@ -111,13 +117,17 @@
         </div>
       </div>
     </div>
-    <div class="header">hello, oscar</div>
+    <div class="header">in theatres</div>
     <div class="grid-container">
-      <div class="grid-img-container2" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
+      <% for( let index = 0; index < 12; index++ ) { %>
+        <div class="grid-img-container2"> <a href= <%= "/film/" + playing[index].id %> > <img class="grid-img" src=<%= "https://image.tmdb.org/t/p/original/" + playing[index].poster_path %> alt="image"> </a> </div>
+      <% } %>
     </div>
-    <div class="header">just released</div>
+    <div class="header">upcoming</div>
     <div class="grid-container">
-      <div class="grid-img-container3" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
+      <% for( let index = 0; index < 12; index++ ) { %>
+        <div class="grid-img-container3"> <a href = <%= "/film/" + upcoming[index].id %> > <img class="grid-img" src=<%= "https://image.tmdb.org/t/p/original/" + upcoming[index].poster_path %> alt="image"> </a> </div>
+      <% } %>
     </div>
     <div class="">
       <h2 class="mid-header">
@@ -137,20 +147,22 @@
       <div>popular this week</div>
       <a href="/films">more</a>
     </div>
-    <div class="element-container">
-      <div class="film-image-container">
-        <img class="film-image" src="/assets/filmimg.jpg" alt="image">
-      </div>
-      <div class="film-content">
-        <div class="film-header">
-          <a class="film-name" href="/film">Avatar: The Way of Water</a>
-          <div class="film-year">2022</div>
+    <% for( let index = 0; index < 3; index++ ) { %>
+      <div class="element-container">
+        <div class="film-image-container">
+          <img class="film-image" src=<%= "https://image.tmdb.org/t/p/original/" + popular[index].poster_path %> alt="image">
         </div>
-        <div class="film-desc">
-          Directed by
-          <div class="film-director">James Cameron</div>
+        <div class="film-content">
+          <div class="film-header">
+            <a class="film-name" href=<%= '/film/' + popular[index].id %> > <%= popular[index].title %> </a>
+            <div class="film-year"> <%= popular[index].release_date.slice(0,4) %> </div>
+          </div>
+          <div class="film-desc">
+            Directed by
+            <div class="film-director"> <%= popular.directors[index] %> </div>
+          </div>
         </div>
       </div>
-    </div>
+    <% } %>
     <script src="/scripts/polaroid.js" charset="utf-8"></script>
 <%- include('./partials/footer.ejs') %>

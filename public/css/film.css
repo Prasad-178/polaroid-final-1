@@ -91,6 +91,7 @@ th {
   max-width: 400px;
   margin-left: 3%;
   margin-right: 3%;
+  position: relative;
 }
 
 .catchphrase {
@@ -98,9 +99,16 @@ th {
   letter-spacing: 0.5px;
 }
 
+.content {
+  position: relative;
+}
+
 .wheretowatch {
+  height: fit-content;
   font-family: "DM Serif Display", serif;
   opacity: 0.9;
+  position: sticky;
+  top: 0;
 }
 
 .description {
@@ -133,6 +141,7 @@ th {
   text-align: center;
   margin-top: 30px;
   font-weight: 600;
+  position: relative;
 }
 
 .sign-in {
@@ -213,6 +222,7 @@ th {
 
 .addReview {
   /* margin-left: 10px; */
+  margin-top: 20px;
 }
 
 .submitReview:active {
@@ -271,6 +281,8 @@ th {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 2.75fr;
+  position: relative;
+
 }
 
 .rightBottom {
@@ -343,12 +355,12 @@ th {
 }
 
 .inner-image {
-  background-image: url("../assets/interstellar_home.jpg");
   background-repeat: no-repeat;
   background-position: center -48px;
   width: 1200px;
   height: 512px;
-  box-shadow: 0 0 80px 100px #14181c inset;
+  box-shadow: 0 0 80px 80px #14181c inset;
+  background-size: cover;
 }
 
 @media screen and (max-width: 850px) {
@@ -441,4 +453,24 @@ td a {
 
 td a:hover {
   color: #628ebc;
+}
+
+.reviewComment {
+  color: green;
+  font-size: 24px;
+}
+
+.errorReview {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.notReviewed {
+  color: green;
+  font-size: 20px;
+}
+
+.wtw-poster {
+  width: 100%;
 }

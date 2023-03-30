@@ -5,7 +5,7 @@ function multiplyNode(node, count, deep) {
     }
   }
 
-  multiplyNode(document.querySelector('.grid-img-container'), 48, true);
+  // multiplyNode(document.querySelector('.grid-img-container'), 48, true);
 
   function changeGridLayout() {
     if (window.innerWidth >= 1100)

@@ -6,12 +6,12 @@ function multiplyNode(node, count, deep) {
   }
   console.log(window.innerWidth)
   
-  multiplyNode(document.querySelector('.grid-img-container2'), 12, true);
-  multiplyNode(document.querySelector('.grid-img-container3'), 12, true);
+  // multiplyNode(document.querySelector('.grid-img-container2'), 12, true);
+  // multiplyNode(document.querySelector('.grid-img-container3'), 12, true);
   
-  multiplyNode(document.querySelector('.grid-img-container1'), 6, true);
+  // multiplyNode(document.querySelector('.grid-img-container1'), 6, true);
   
-  multiplyNode(document.querySelector('.element-container'), 3, true);
+  // multiplyNode(document.querySelector('.element-container'), 3, true);
   
   function changeGridLayout() {
     var items = document.getElementsByClassName('grid-container');

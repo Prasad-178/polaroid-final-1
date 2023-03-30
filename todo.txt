@@ -1,0 +1,48 @@
+forgot password (page)
+  -> enter otp
+  -> enter new password
+  -> confirm new password
+  -> submit button
+
+email verification (page)
+  -> enter otp
+  -> submit button
+  -> (update the user model)
+
+settings page backend + regex
+
+add to list/favourites/watchlist/watched (dropdown inside film page)
+
+films page dynamic
+
+--------------------------------------------------------
+optional - contact us form (title + description + email)
+--------------------------------------------------------
+
+505 page
+
+payment gateway (stripe or razorpay)
+
+booking backend + (javascript -> arka)
+arka instructions
+  -> in url there will be number of tickets
+  -> localhost:3500/book/<movieId>/<noOfTickets>
+  -> use this number for js validation
+
+booking details page form bug
+  -> url : localhost:3500/bookingform/<movieId>
+
+many backend bugs (idk how to fix right now)
+
+change image of list which does not have anything
+
+
+make profile page dynamic 
+  -> remove follow button from your own profile page
+  -> maximum 6/7/8 favourites
+  -> recent reviews is optional
+  -> remove more button from recent reviews
+
+allow us to see others profile
+
+network (followers, following)

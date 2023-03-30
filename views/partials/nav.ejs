@@ -19,19 +19,6 @@
     </svg>
   </label>
   <ul>
-<<<<<<< HEAD
-    <li><a href="/" id="home">Home</a></li>
-    <li><a href="/films" id="films">Films</a></li>
-    <li><a href="/lists" id="lists">Lists</a></li>
-    <% if (check) { %>
-      <li><a href="/user/settings" id="settings"> Settings </a></li>
-    <% } %>
-    <% if (!check) { %>
-      <li><a href="/user/login" id="settings"> Sign In </a></li>
-    <% } %>
-    <li id="searchButtonLi">
-      <a href="/search">
-=======
     <li class="navbar-list-element">
       <a class="navbar-anchor" href="/" id="home">Home</a>
     </li>
@@ -51,7 +38,7 @@
     <li class="navbar-list-element" class="nav-item dropdown">
       <div class="dropdown">
         <a class="dropdown-toggle navbar-anchor" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <%= !check ? "Sign In" : "ChocolateFrog18" %>
+          <%= !check ? "Sign In" : username %>
         </a>
         <ul class="dropdown-menu dropdown-menu-dark">
           <li><a class="dropdown-item" href="/profile">My Account</a></li>
@@ -70,7 +57,6 @@
 
     <li class="navbar-list-element" id="searchButtonLi">
       <a class="navbar-anchor"  href="/search">
->>>>>>> dabdb73a21443099710c8d8e501019ab676d56f5
         <button id="searchButton">
           <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="#8291A5" class="bi bi-search" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>

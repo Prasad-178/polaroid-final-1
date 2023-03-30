@@ -5,10 +5,10 @@ function multiplyNode(node, count, deep) {
     }
 }
 
-var elements = document.querySelectorAll('.list-card');
-for (var i = 0; i < elements.length; i++){
-	multiplyNode(elements[i], 12, true);
-}
+// var elements = document.querySelectorAll('.list-card');
+// for (var i = 0; i < elements.length; i++){
+// 	multiplyNode(elements[i], 12, true);
+// }
 
 function changeCardLayout() {
     var elements = document.getElementsByClassName("list-card-group");

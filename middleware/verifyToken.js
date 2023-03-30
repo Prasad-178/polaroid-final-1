@@ -4,16 +4,16 @@ const variables = require('../config')
 const User = require('../models/user')
 
 const check = async (req, res, next) => {
-    const cookies = req.headers.cookie
+    // const cookies = req.headers.cookie
     // console.log(cookies)
     const token = req.cookies && req.cookies.authToken
-    console.log(token)
+    // console.log(token)
     
     if (!token) {
         session.isLoggedIn = false
         session.email = ""
         session.username = ""
-        console.log("no token")
+        // console.log("no token")
         next()
 
         return
