@@ -1,7 +1,7 @@
 <%- include('./partials/boilerplate.ejs') %>
 <%- include('./partials/nav.ejs', {check: check, username: username, email: email}) %>
 <link rel="stylesheet" href="/css/user_list.css">
-<title>Polaroid | Lists</title>
+<title>Polaroid | <%=username %> | Lists</title>
   <div class="main">
     <div class="list-adder-section">
       <button type="button" class="btn btn-outline-warning button-adder" data-bs-toggle="modal" data-bs-target="#staticBackdrop">

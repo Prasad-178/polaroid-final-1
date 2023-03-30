@@ -359,7 +359,7 @@ th {
   background-position: center -48px;
   width: 1200px;
   height: 512px;
-  box-shadow: 0 0 80px 80px #14181c inset;
+  box-shadow: 0 0 75px 85px #14181c inset;
   background-size: cover;
 }
 
@@ -456,8 +456,8 @@ td a:hover {
 }
 
 .reviewComment {
-  color: green;
-  font-size: 24px;
+  color: grey;
+  font-size: 18px;
 }
 
 .errorReview {
@@ -467,7 +467,7 @@ td a:hover {
 }
 
 .notReviewed {
-  color: green;
+  color: IndianRed;
   font-size: 20px;
 }
 
