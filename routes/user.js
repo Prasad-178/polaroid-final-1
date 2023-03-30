@@ -6,10 +6,10 @@ const appendToList = require("../controllers/list/appendItemToList");
 const createList = require("../controllers/list/createList");
 const verifyToken = require("../middleware/verifyToken");
 const session = require("../session/session");
-const { email } = require("../session/session");
 const getMyLists = require("../controllers/list/getMyLists");
 const deleteList = require("../controllers/list/deleteList");
 const getMyListByName = require("../controllers/list/getMyListByName");
+const getUser = require("../controllers/user/getUser");
 const router = Router();
 
 router.get("/login", (req, res) => {
@@ -24,33 +24,59 @@ router.post("/login", login);
 
 router.post("/register", register);
 
-router.get('/watchlist', (req, res) => {
-    res.render('watchlist', {check: true, username: session.username, email: session.email})
-})
+router.post("/createlist", createList);
 
 router.post("/addtolist", appendToList);
 
-//     // query to find user having a specific email
-//     const query = "select * from user where email=?"
+router.get("/settings", (req, res) => {
+  if (!session.isLoggedIn) {
+    res.redirect("/user/login");
+    return;
+  }
+  res.render("settings", {
+    check: session.isLoggedIn,
+    username: session.username,
+    email: session.email,
+  });
+  console.log(session);
+});
 
-//   res.redirect("/user/list");
-// });
+router.get("/profile", async (req, res) => {
+  const user = await getUser();
+  res.render("profile", {
+    check: session.isLoggedIn,
+    username: session.username,
+    email: session.email,
+    currentUser: true,
+    data: user,
+  });
+});
 
 router.get("/list/:listName", async (req, res) => {
   let listName = req.params.listName;
   listName.replace("%20", " ");
 
   const list = await getMyListByName(listName);
-  console.log(list)
+  console.log(list);
   res.render("list_page", {
     check: session.isLoggedIn,
     username: session.username,
     email: session.email,
     data: list,
-    heading: "CREATED BY "+session.username,
-    time: "Created On "+list.createdAt.slice(0,15),
+    heading: "CREATED BY " + session.username,
+    time: "Created On " + list.createdAt.slice(0, 15),
     isTrending: false,
-    listHeading: list.listName
+    listHeading: list.listName,
+  });
+});
+
+router.get("/watchlist", async (req, res) => {
+  const user = await getUser()
+  res.render("watchlist", {
+    check: true,
+    username: session.username,
+    email: session.email,
+    data: user.planToWatch
   });
 });
 

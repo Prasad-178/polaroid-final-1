@@ -11,9 +11,17 @@
             <span class="slider round"></span>
         </label>
     </div>
-    <div class="header-bar">There are 789,912 films</div>
+    <div class="header-bar"> Explore to your heart's content </div>
     <div class="grid-container" id="grid-container">
-        <div class="grid-img-container"><img class="grid-img" onclick="location.href='/film'" src="/assets/filmimg.jpg" alt="image"></div>
+        <% for (let i=0; i<upcoming.results.length; i++) { %>
+            <div class="grid-img-container"> <a href=<%= "/film/"+upcoming.results[i].id %>> <img class="grid-img" src=<%= "https://image.tmdb.org/t/p/original" + upcoming.results[i].poster_path %> alt="image"> </a> </div>
+        <% } %>
+        <% for (let i=0; i<trendingMovies.results.length; i++) { %>
+            <div class="grid-img-container"> <a href= <%= "/film/"+ trendingMovies.results[i].id %>> <img class="grid-img" src=<%= "https://image.tmdb.org/t/p/original" + trendingMovies.results[i].poster_path %> alt="image"> </a> </div>
+        <% } %>
+        <% for (let i=0; i<nowPlaying.results.length; i++) { %>
+            <div class="grid-img-container"> <a href= <%= "/film/"+ nowPlaying.results[i].id %>> <img class="grid-img" src=<%= "https://image.tmdb.org/t/p/original" + nowPlaying.results[i].poster_path %> alt="image"> </a> </div>
+        <% } %>
     </div>
 </div>
 <script src="/scripts/films.js" charset="utf-8"></script>

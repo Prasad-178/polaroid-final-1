@@ -8,37 +8,36 @@
       <img src="/assets/cat.jpg" height="100px" class="dp">
       <div class="profile-metadata">
           <div class="profile-name"> <%= username %> </div>
-          <button class="followButton">FOLLOW</button>
+          <% if (!currentUser) { %>
+            <button class="followButton">FOLLOW</button>
+          <% } %>
       </div>
     </div>
     <div class="profile-social-metadata">
       <div class="social-component">
-          <div class="social-component-counter">314</div>
-          <a href="#" class="social-component-name">films</a>
+          <div class="social-component-counter"> <%= data.watched.length %> </div>
+          <a href="/user/watchedfilms" class="social-component-name">films</a>
       </div>
       <div class="social-component">
           <div class="social-component-counter">0</div>
-          <a href="#" class="social-component-name">lists</a>
+          <a href="/user/list" class="social-component-name">lists</a>
       </div>
       <div class="social-component">
-          <div class="social-component-counter">3</div>
+          <div class="social-component-counter"> <%= data.following.length %> </div>
           <a href="#" class="social-component-name">following</a>
       </div>
       <div class="social-component">
-          <div class="social-component-counter">2</div>
+          <div class="social-component-counter"> <%= data.followers.length %> </div>
           <a href="#" class="social-component-name">followers</a>
       </div>
     </div>
   </div>
   <div class="select-section">
     <div class="nav-link">
-      <a href="/profile" class="section-name  active">profile</a>
+      <a href="/user/profile" class="section-name  active">profile</a>
     </div>
     <div class="nav-link">
       <a href="/user/watchedfilms" class="section-name">watched films</a>
-    </div>
-    <div class="nav-link">
-      <a href="/user/reviews" class="section-name">reviews</a>
     </div>
     <div class="nav-link">
       <a href="/user/watchlist" class="section-name">watchlist</a>
@@ -52,29 +51,27 @@
   </div>
 
   <div class="section-heading">favorite films</div>
+  <% if (data.favourites.length===0) { %>
+    <p style="color: white;">No favourites added yet!</p>
+  <% } %>
   <div class="grid-container">
-    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/list_image.jpg" alt="image"></div>
-    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/list_image.jpg" alt="image"></div>
-    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/list_image.jpg" alt="image"></div>
-    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/list_image.jpg" alt="image"></div>
-    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/list_image.jpg" alt="image"></div>
-    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/list_image.jpg" alt="image"></div>
-    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/list_image.jpg" alt="image"></div>
+    <% for (let i=0; i<data.favourites.length; i++) { %>
+      <div class="grid-img-container"> <a href=<%= "/film/"+data.favourites[i].id %>> <img class="grid-img" src=<%= "https://image.tmdb.org/t/p/original/"+data.favourites[i].poster_path %> alt="image"> </a> </div>
+    <% } %>
   </div>
 
   <div class="section-heading">recently watched</div>
+  <% if (data.favourites.length===0) { %>
+    <p style="color: white;">No movies added to watched yet!</p>
+  <% } %>
   <div class="grid-container">
-    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
-    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
-    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
-    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
-    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
-    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
-    <div class="grid-img-container" onclick="location.href='/film'"><img class="grid-img" src="/assets/filmimg.jpg" alt="image"></div>
+    <% for (let i=0; i<Math.min(data.watched.length, 6); i++) { %>
+      <div class="grid-img-container"> <a href=<%= "/film/"+data.watched[i].id %>> <img class="grid-img" src=<%= "https://image.tmdb.org/t/p/original/"+data.watched[i].poster_path %> alt="image"> </a> </div>
+    <% } %>
   </div>
 
 
-  <div class="section-heading">
+  <!-- <div class="section-heading">
     <div>recent reviews</div>
     <a href="/films">more</a>
   </div>
@@ -91,8 +88,8 @@
         All time best movie
       </div>
     </div>
-  </div>
-  <div class="element-container">
+  </div> -->
+  <!-- <div class="element-container">
     <div class="film-image-container">
       <img class="film-image" src="/assets/list_image.jpg" alt="image">
     </div>
@@ -105,7 +102,7 @@
         All time best movie
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
 
 <%- include('./partials/footer.ejs') %>

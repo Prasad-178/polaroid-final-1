@@ -5,7 +5,7 @@ function multiplyNode(node, count, deep) {
     }
   }
   
-  multiplyNode(document.querySelector('.grid-img-container'), 84, true);
+  // multiplyNode(document.querySelector('.grid-img-container'), 84, true);
   
   
   function changeGridLayout() {

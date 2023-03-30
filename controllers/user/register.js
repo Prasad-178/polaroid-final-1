@@ -39,7 +39,13 @@ const register = async (req, res) => {
     const newUser = new User({
         username: username,
         email: email,
-        password: hashedPassword
+        password: hashedPassword,
+        favourites: [],
+        watched: [],
+        planToWatch: [],
+        followers: [],
+        following: [],
+        photo: ""
     })
 
     try {

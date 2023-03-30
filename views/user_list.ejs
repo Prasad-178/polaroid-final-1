@@ -1,7 +1,7 @@
 <%- include('./partials/boilerplate.ejs') %>
 <%- include('./partials/nav.ejs', {check: check, username: username, email: email}) %>
 <link rel="stylesheet" href="/css/user_list.css">
-<title>Polaroid | Lists</title>
+<title>Polaroid | My Lists</title>
   <div class="main">
     <div class="list-adder-section">
       <button type="button" class="btn btn-outline-warning button-adder" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -27,7 +27,7 @@
                 <img class="list-image" src=<%= "https://image.tmdb.org/t/p/original" + lists[index].items[0].poster_path %> alt="image">
               <% } %>
               <% if (lists[index].items.length === 0) { %>
-                <img class="list-image" src="/assets/filmimg.jpg" alt="image">
+                <img class="list-image" src="https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg" alt="image">
               <% } %>
             </div>
             <div class="list-content">

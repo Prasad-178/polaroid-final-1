@@ -13,6 +13,7 @@ const getReviews = require("../controllers/reviews/getReviewsAndRating");
 const addReview = require("../controllers/reviews/addReview");
 const getSimilarMovies = require("../api/getSimilarMovies");
 const getRecentLists = require("../controllers/list/getRecentLists");
+const getTrendingMovies = require("../api/getTrendingMovies");
 const getTrendingListsToday = require("../api/getTrendingLists").day;
 const getTrendingListsthisWeek = require("../api/getTrendingLists").week;
 
@@ -138,19 +139,17 @@ router.get("/about", (req, res) => {
   });
 });
 
-router.get("/films", (req, res) => {
+router.get("/films", async (req, res) => {
+  const nowPlaying = await getNowPlaying()
+  const trendingMovies = await getTrendingMovies()
+  const upcoming = await getUpcoming()
   res.render("films", {
     check: session.isLoggedIn,
     username: session.username,
     email: session.email,
-  });
-});
-
-router.get("/profile", (req, res) => {
-  res.render("profile", {
-    check: session.isLoggedIn,
-    username: session.username,
-    email: session.email,
+    upcoming: upcoming,
+    nowPlaying: nowPlaying,
+    trendingMovies: trendingMovies
   });
 });
 
