@@ -38,6 +38,14 @@ router.get('/watchedfilms', (req, res) => {
     res.render('watched_films', {check: true})
 })
 
+router.get('/watchlist', (req, res) => {
+    if (!session.isLoggedIn) {
+        res.redirect('login')
+        return
+    }
+    res.render('watchlist', {check: true})
+})
+
 router.get('/list', (req, res) => {
     if (!session.isLoggedIn) {
         res.redirect('login')
