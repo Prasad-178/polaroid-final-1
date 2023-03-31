@@ -14,6 +14,21 @@ const settings = async (req, res) => {
   }
   console.log(existingUser)
 
+  let checkUsername 
+  try {
+    checkUsername = await User.findOne({ username: username }).exec()
+  } catch (err) {
+    console.log(err)
+  }
+
+  if (checkUsername) {
+    return {
+      success: false,
+      error: "Username already taken!",
+      successMessage: ""
+    }
+  }
+
   if (originalPassword.length > 0) {
     const isPasswordSame = bcrypt.compareSync(originalPassword, existingUser.password)
     if (!isPasswordSame) {

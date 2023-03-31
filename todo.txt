@@ -1,66 +1,90 @@
-forgot password (page)
-  -> enter otp
-  -> enter new password
-  -> confirm new password
-  -> submit button
+forgot password (page - 2 pages) - assigned to Urjasvi
+  -> enter email id (text field)
+  -> send otp (button)
 
-email verification (page)
+  -> enter otp (text field)
+  -> enter new password (text field)
+  -> confirm new password (text field)
+  -> submit button
+  (done by sunday/monday)
+
+email verification (page - ON HOLD)
   -> enter otp
   -> submit button
   -> (update the user model)
+  -> cannot book tickets without verifying email 
 
-settings page backend
-settings regex - DONE
-
-> instructions for prasad
-  -> check if the old password matches with the given record
-  -> check if the old password doesn't match with the new password
-  -> throw error if old password is not empty and new password is empty
-
-add to list/favourites/watchlist/watched (dropdown inside film page)
-
-films page dynamic - DONE
+add to list/favourites/watchlist/watched (dropdown inside film page) - arka will make
+(done by sunday/monday)
 
 --------------------------------------------------------
 optional - contact us form (title + description + email)
 --------------------------------------------------------
 
-505 page
+505 page - assigned to kalyan
+(done soon)
 
-payment gateway (stripe or razorpay)
+payment gateway (stripe or razorpay) - IMPORTANT - assigned to prasad
+(done one tuesday/wednesday)
 
-booking backend + (javascript -> arka)
+booking backend + (javascript -> arka) - IMPORTANT - assigned to prasad
+(done on tuesday)
 arka instructions
   -> in url there will be number of tickets
   -> localhost:3500/book/<movieId>/<noOfTickets>
   -> use this number for js validation
+  (done by wednesday)
 
-booking details page form bug
+network page - assigned to arka
+(done soon)
+network backend - assigned to prasad
+(done by wednesday)
+
+change lgbtq logo everywhere - assigned to kalyan
+(done soon)
+
+booking history instead of reviews (page) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+many backend bugs (idk how to fix right now) - DONE
+booking details page form bug - DONE
   -> url : localhost:3500/bookingform/<movieId>
-
-many backend bugs (idk how to fix right now)
-
 change image of list which does not have anything - DONE
-
-
 make profile page dynamic - DONE
   -> remove follow button from your own profile page - DONE
   -> maximum 6/7/8 favourites - DONE
   -> recent reviews is optional - REMOVED THIS, LETS SEE LATER IF WE NEED IT
   -> remove more button from recent reviews - DONE
-
-allow us to see others profile - DONE (we can see others profile page now)
-
-network (followers, following) - DONE FOLLOWERS AND FOLLOWING, NEED TO ADD IT TO THE NETWORK PAGE
-
 implement logout in backend and connect it to frontend - DONE
-
 remove reviews section in navbar - DONE
-
-add youtube logo in trailer in film page/remove trailer button
-
+allow us to see others profile - DONE (we can see others profile page now)
+network (followers, following) - DONE
+add youtube logo in trailer in film page/remove trailer button - DONE
 add proper title to all pages - DONE
-
-change lgbtq logo everywhere
-
-add "no results found" to search page
+add "no results found" to search page - DONE
+films page dynamic - DONE
+settings page backend - DONE
+settings regex - DONE
+> instructions for prasad - DONE
+  -> check if the old password matches with the given record
+  -> check if the old password doesn't match with the new password
+  -> throw error if old password is not empty and new password is empty
