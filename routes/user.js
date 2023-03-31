@@ -10,6 +10,7 @@ const getMyLists = require("../controllers/list/getMyLists");
 const deleteList = require("../controllers/list/deleteList");
 const getMyListByName = require("../controllers/list/getMyListByName");
 const getUser = require("../controllers/user/getUser");
+const settings = require("../controllers/user/settings");
 const router = Router();
 
 router.get("/login", (req, res) => {
@@ -37,9 +38,23 @@ router.get("/settings", (req, res) => {
     check: session.isLoggedIn,
     username: session.username,
     email: session.email,
+    data: {
+      success: false,
+      successMessage: "",
+      error: ""
+    }
   });
-  console.log(session);
 });
+
+router.post('/settings', async (req, res) => {
+  const data = await settings(req, res)
+  res.render("settings", {
+    check: session.isLoggedIn,
+    username: session.username,
+    email: session.email,
+    data: data
+  })
+})
 
 router.get("/profile", async (req, res) => {
   const user = await getUser();
@@ -57,7 +72,6 @@ router.get("/list/:listName", async (req, res) => {
   listName.replace("%20", " ");
 
   const list = await getMyListByName(listName);
-  console.log(list);
   res.render("list_page", {
     check: session.isLoggedIn,
     username: session.username,
@@ -90,7 +104,6 @@ router.get("/watchedfilms", (req, res) => {
 
 router.get("/list", async (req, res) => {
   const lists = await getMyLists();
-  console.log(lists);
   res.render("user_list", {
     check: true,
     username: session.username,
@@ -110,6 +123,6 @@ router.post("/list/delete/:listName", async (req, res) => {
 
 router.post("/list", createList);
 
-router.post("/logout", logout);
+router.get("/logout", logout);
 
 module.exports = router;

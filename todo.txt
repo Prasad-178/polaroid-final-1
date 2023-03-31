@@ -9,11 +9,17 @@ email verification (page)
   -> submit button
   -> (update the user model)
 
-settings page backend + regex
+settings page backend
+settings regex - DONE
+
+> instructions for prasad
+  -> check if the old password matches with the given record
+  -> check if the old password doesn't match with the new password
+  -> throw error if old password is not empty and new password is empty
 
 add to list/favourites/watchlist/watched (dropdown inside film page)
 
-films page dynamic
+films page dynamic - DONE
 
 --------------------------------------------------------
 optional - contact us form (title + description + email)
@@ -34,26 +40,26 @@ booking details page form bug
 
 many backend bugs (idk how to fix right now)
 
-change image of list which does not have anything
+change image of list which does not have anything - DONE
 
 
-make profile page dynamic 
-  -> remove follow button from your own profile page
-  -> maximum 6/7/8 favourites
-  -> recent reviews is optional
-  -> remove more button from recent reviews
+make profile page dynamic - DONE
+  -> remove follow button from your own profile page - DONE
+  -> maximum 6/7/8 favourites - DONE
+  -> recent reviews is optional - REMOVED THIS, LETS SEE LATER IF WE NEED IT
+  -> remove more button from recent reviews - DONE
 
-allow us to see others profile
+allow us to see others profile - DONE (we can see others profile page now)
 
-network (followers, following)
+network (followers, following) - DONE FOLLOWERS AND FOLLOWING, NEED TO ADD IT TO THE NETWORK PAGE
 
-implement logout in backend and connect it to frontend
+implement logout in backend and connect it to frontend - DONE
 
-remove reviews section in navbar
+remove reviews section in navbar - DONE
 
 add youtube logo in trailer in film page/remove trailer button
 
-add proper title to all pages
+add proper title to all pages - DONE
 
 change lgbtq logo everywhere
 

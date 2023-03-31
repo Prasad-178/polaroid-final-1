@@ -39,6 +39,10 @@ body {
   margin-left: 15px;
 }
 
+.profile-metadata form button {
+  min-width: 120px;
+}
+
 .profile-social-metadata {
   display: flex;
   flex-direction: row;

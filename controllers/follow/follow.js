@@ -2,7 +2,7 @@ const user = require("../../models/user")
 const session = require("../../session/session")
 
 const follow = async (req, res) => {
-    const { username } = req.body
+    const username = req.params.name.replace("%20", " ")
 
     let existingUser
     try {
@@ -16,16 +16,15 @@ const follow = async (req, res) => {
         return
     }
 
-    existingUser.following.push(username)
-
     let otherUser
     try {
         otherUser = await user.findOne({ username: username }).exec()
     } catch (err) {
         console.log(err)
     }
-
-    otherUser.followers.push(session.username)
+    
+    existingUser.following.push(otherUser.email)
+    otherUser.followers.push(session.email)
 
     try {
         await existingUser.save()
@@ -39,7 +38,7 @@ const follow = async (req, res) => {
         console.log(err)
     }
 
-    return
+    res.redirect('/profile/'+username.replace(" ", "%20"))
 }
 
 module.exports = follow

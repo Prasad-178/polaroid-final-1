@@ -14,6 +14,9 @@ const addReview = require("../controllers/reviews/addReview");
 const getSimilarMovies = require("../api/getSimilarMovies");
 const getRecentLists = require("../controllers/list/getRecentLists");
 const getTrendingMovies = require("../api/getTrendingMovies");
+const getUserByName = require("../controllers/user/getUserByName");
+const follow = require("../controllers/follow/follow");
+const unFollow = require("../controllers/follow/unfollow");
 const getTrendingListsToday = require("../api/getTrendingLists").day;
 const getTrendingListsthisWeek = require("../api/getTrendingLists").week;
 
@@ -139,6 +142,27 @@ router.get("/about", (req, res) => {
   });
 });
 
+router.get('/profile/:name', async (req, res) => {
+  const name = req.params.name.replace("%20", " ")
+  let currentUser
+  if (name == session.username) {
+    res.redirect('/user/profile')
+    return
+  } 
+  const user = await getUserByName(name)
+  res.render("othersProfile", {
+    check: session.isLoggedIn,
+    username: session.username,
+    email: session.email,
+    currentUser: false,
+    data: user,
+  });
+})
+
+router.post('/profile/follow/:name', follow)
+
+router.post('/profile/unfollow/:name', unFollow)
+
 router.get("/films", async (req, res) => {
   const nowPlaying = await getNowPlaying()
   const trendingMovies = await getTrendingMovies()
@@ -168,6 +192,7 @@ router.get("/film/:id", async (req, res) => {
   const watch = await getWatchProviders(id);
   const reviews = await getReviews(id)
   const similar = await getSimilarMovies(id)
+  console.log(reviews)
     res.render("film", {
     check: session.isLoggedIn,
     username: session.username,

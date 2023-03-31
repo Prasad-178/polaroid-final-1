@@ -2,7 +2,7 @@ const user = require("../../models/user")
 const session = require("../../session/session")
 
 const unFollow = async (req, res) => {
-    const { username } = req.body
+    const username = req.params.name.replace("%20", " ")
 
     let existingUser
     try {
@@ -15,20 +15,19 @@ const unFollow = async (req, res) => {
         console.log("No such user exists!")
         return
     }
-
-    existingUser.following.filter((x) => {
-        return x!==username
-    })
-
+    
     let otherUser
     try {
         otherUser = await user.findOne({ username: username }).exec()
     } catch (err) {
         console.log(err)
     }
-
-    otherUser.followers.filter((x) => {
-        return x!==session.username
+    
+    existingUser.following = existingUser.following.filter((x) => {
+        return x!==otherUser.email
+    })
+    otherUser.followers = otherUser.followers.filter((x) => {
+        return x!==session.email
     })
 
     try {
@@ -43,7 +42,7 @@ const unFollow = async (req, res) => {
         console.log(err)
     }
 
-    return
+    res.redirect('/profile/'+username.replace(" ", "%20"))
 }
 
 module.exports = unFollow

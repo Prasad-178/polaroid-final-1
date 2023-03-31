@@ -116,9 +116,7 @@
         </p>
       <% } %>
       <p class="ratingAns">
-        <% for (let index=0; index < reviews.avg; index++) { %>
-          ⭐
-          <% } %>
+        <%= reviews.avg %>⭐
       </p>
     </div>
   </div>
@@ -135,9 +133,11 @@
         <% for( let index=0; index < Math.min(reviews.reviews.length, 3); index++ ) { %>
           <p class="reviewName">
             Review by 
-            <span class="reviewN" onclick="location.href='/profile'">
-              <%= reviews.reviews[index].username %>
-            </span> 
+            <a class="profileLink" href=<%= '/profile/'+reviews.reviews[index].username.replace(" ", "%20") %>>
+              <span class="reviewN">
+                <%= reviews.reviews[index].username %>
+              </span> 
+            </a>
             <span class="starsReview">
               <%= reviews.reviews[index].stars %> ⭐
             </span>
