@@ -12,10 +12,9 @@ email verification (page - ON HOLD)
   -> enter otp
   -> submit button
   -> (update the user model)
-  -> cannot book tickets without verifying email 
+  -> cannot book tickets without verifying email
 
-add to list/favourites/watchlist/watched (dropdown inside film page) - arka will make
-(done by sunday/monday)
+add to list/favourites/watchlist/watched (dropdown inside film page) - DONE
 
 --------------------------------------------------------
 optional - contact us form (title + description + email)
@@ -43,7 +42,9 @@ network backend - assigned to prasad
 change lgbtq logo everywhere - assigned to kalyan
 (done soon)
 
-booking history instead of reviews (page) 
+booking history instead of reviews (page)
+
+add delete review
 
 
 
