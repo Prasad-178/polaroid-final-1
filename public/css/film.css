@@ -478,3 +478,58 @@ td a:hover {
 .profileLink {
   text-decoration: none;
 }
+
+.add-to-fav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 8px;
+}
+
+.add-to-fav-title {
+  margin-right: 8px;
+}
+
+.add-to-fav-icon > button {
+  outline: none;
+  border: none;
+  background-color: inherit;
+}
+
+.review-header {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-film-button {
+  border: 0;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.add-to-list {
+  /* font-size: 20px; */
+  /* border-bottom: 1px solid #456; */
+  /* margin-bottom: 15px; */
+  /* text-align: left; */
+}
+
+.list-selector {
+  background-color: #456;
+  color: whitesmoke;
+  border-radius: 5px;
+  height: 30px;
+  border: none;
+  outline: none;
+}
+
+.add-to-list-section {
+  /* border-bottom: 26px; */
+}
