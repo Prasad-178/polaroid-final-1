@@ -135,3 +135,16 @@ body {
   cursor: pointer;
   height: 20px;
 }
+
+.pass-info {
+  color: #678;
+  font-size: 15px;
+  margin: 6px 0px;
+  width: 40%;
+}
+
+.header-line {
+  border-bottom: 1px solid #345;
+  width: 40%;
+  margin-bottom: 12px;
+}

@@ -172,7 +172,7 @@
         </select>
       </div>
       <% if (check===false) { %>
-        <button class="sign-in">
+        <button class="sign-in" onclick="location.href='/user/login'">
           Sign in to rate or review
         </button>
         <% } %>
@@ -189,12 +189,14 @@
       </p>
       <% if (reviews.avg===undefined) { %>
         <p class="notReviewed">
-          This movie has not been reviewed yet!
+          This movie has not been rated yet!
         </p>
       <% } %>
+      <% if (reviews.avg!==undefined) { %>
       <p class="ratingAns">
         <%= reviews.avg %>&nbsp;⭐
       </p>
+      <% } %>
     </div>
   </div>
   <div class="bottom-content">

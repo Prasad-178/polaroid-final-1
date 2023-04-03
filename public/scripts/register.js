@@ -1,23 +1,34 @@
 var isInvalidEmail = false;
 var isPassSame = true;
+var isPassStrong = true;
 
 function validateForm() {
   var emailValidation;
   var passValidation;
+  var passStrength;
 
   emailValidation = checkEmail();
   passValidation = checkPassword();
+  passStrength = strongPassCheck();
 
-  if ((emailValidation === false) && (passValidation === false)) {
+  if ((emailValidation === false) && (passValidation === false) && ((passStrength === false) || (passStrength === true))) {
     document.getElementById('alert-zone-1').innerHTML = "Please enter a valid email address";
     document.getElementById('alert-zone-2').innerHTML = "Password does not match";
   }
-  else if ((emailValidation === false) && (passValidation === true)) {
+  else if ((emailValidation === false) && (passValidation === true) && (passStrength === false)) {
+    document.getElementById('alert-zone-1').innerHTML = "Please enter a valid email address";
+    document.getElementById('alert-zone-2').innerHTML = "Please enter a strong password";
+  }
+  else if ((emailValidation === false) && (passValidation === true) && (passStrength === true)) {
     document.getElementById('alert-zone-1').innerHTML = "Please enter a valid email address";
     document.getElementById('alert-zone-2').innerHTML = "";
   }
-  else if ((emailValidation === true) && (passValidation === false)) {
+  else if ((emailValidation === true) && (passValidation === false) && ((passStrength === false) || (passStrength === true))) {
     document.getElementById('alert-zone-1').innerHTML = "Password does not match";
+    document.getElementById('alert-zone-2').innerHTML = "";
+  }
+  else if (passStrength === false)  {
+    document.getElementById('alert-zone-1').innerHTML = "Please enter a strong password";
     document.getElementById('alert-zone-2').innerHTML = "";
   }
   else {
@@ -25,7 +36,7 @@ function validateForm() {
     document.getElementById('alert-zone-2').innerHTML = "";
   }
 
-  return emailValidation && passValidation;
+  return emailValidation && passValidation && passStrength;
 }
 
 function checkEmail() {
@@ -69,6 +80,19 @@ function checkPassword() {
   return isPassSame;
 }
 
+function strongPassCheck() {
+  var passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
+
+  var pass = document.getElementById('password-input').value;
+
+  if ((pass != "") && !pass.match(passRegex))
+    isPassStrong = false;
+  else
+    isPassStrong = true;
+
+  return isPassStrong;
+}
+
 
 function onFocusinEmail() {
   document.getElementById('email-input').style.outline = "none";
@@ -106,7 +130,7 @@ function onFocusoutName() {
 }
 
 function onFocusoutPass() {
-  if (!isPassSame) {
+  if (!isPassSame || !isPassStrong) {
     document.getElementById('password-input').style.backgroundColor = "#eb9898";
     document.getElementById('password-input').style.outline = "2px solid red";
   }
@@ -117,7 +141,7 @@ function onFocusoutPass() {
 }
 
 function onFocusoutRePass() {
-  if (!isPassSame) {
+  if (!isPassSame || !isPassStrong) {
     document.getElementById('repassword-input').style.backgroundColor = "#eb9898";
     document.getElementById('repassword-input').style.outline = "2px solid red";
   }
@@ -128,7 +152,7 @@ function onFocusoutRePass() {
 }
 
 function disableButton() {
-  if (!isPassSame || isInvalidEmail) {
+  if (!isPassSame || isInvalidEmail || !isPassStrong) {
     document.getElementById('submit-button').disabled = true;
   }
   else {
