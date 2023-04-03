@@ -2,7 +2,7 @@ const user = require("../../models/user")
 const session = require("../../session/session")
 
 const unFollow = async (req, res) => {
-    const username = req.params.name.replace("%20", " ")
+    const username = req.params.name.split("%20").join(" ") 
 
     let existingUser
     try {
@@ -42,7 +42,7 @@ const unFollow = async (req, res) => {
         console.log(err)
     }
 
-    res.redirect('/profile/'+username.replace(" ", "%20"))
+    res.redirect('/profile/'+username.split(" ").join("%20"))
 }
 
 module.exports = unFollow

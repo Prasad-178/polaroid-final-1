@@ -479,6 +479,11 @@ td a:hover {
   text-decoration: none;
 }
 
+.link-wl {
+  text-decoration: none;
+  color: inherit;
+}
+
 .add-to-fav {
   display: flex;
   flex-direction: row;

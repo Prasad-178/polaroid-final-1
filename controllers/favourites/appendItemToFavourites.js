@@ -1,9 +1,8 @@
+const getMovieById = require("../../api/getMovieById")
 const user = require("../../models/user")
 const session = require("../../session/session")
 
-const addToFavourites = async (req, res) => {
-    const { item } = req.body
-    
+const addToFavourites = async (item) => {
     let existingUser
     try {
         existingUser = await user.findOne({ email: session.email }).exec()
@@ -12,11 +11,20 @@ const addToFavourites = async (req, res) => {
         return
     }
 
-    if (user.favourites.length >= 4) {
+    for (let i=0; i<existingUser.favourites.length; i++) {
+        if (existingUser.favourites[i].id===item) return
+    }
+
+    if (existingUser.favourites.length >= 5) {
         console.log("Favourites list is full, cannot add any more items!")
         return
     }
-    existingUser.favourites.push(item)
+
+    const movieData = await getMovieById(item)
+    existingUser.favourites.push({
+        id: item,
+        poster_path: movieData.poster_path
+    })
 
     try {
         await existingUser.save()

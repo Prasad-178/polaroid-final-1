@@ -1,8 +1,8 @@
+const getMovieById = require('../../api/getMovieById')
 const List = require('../../models/list')
 const session = require('../../session/session')
 
-const appendToList = async (req, res) => {
-    const { listName, listItem } = req.body
+const appendToList = async (listName, listItem) => {
 
     let existingList
     try {
@@ -16,7 +16,21 @@ const appendToList = async (req, res) => {
         return
     }
 
-    existingList.items.push(listItem)
+    for (let i=0; i<existingList.items.length; i++) {
+        if (existingList.items[i].id === listItem) {
+            return
+        }
+    }
+
+    const movieData = await getMovieById(listItem)
+    const poster_path = movieData.poster_path
+
+    existingList.items.push({
+        id: listItem,
+        poster_path: poster_path
+    })
+
+    console.log(existingList.items)
 
     try {
         existingList.save() 

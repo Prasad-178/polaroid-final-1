@@ -6,7 +6,7 @@ const getMovieByName = async (name) => {
     // console.log("hi")
     name = name.toString().trim()
     while (name.includes(" ")) {
-        name = name.replace(" ", "%20")
+        name = name.split(" ").join("%20")
     }
     let url = `https://api.themoviedb.org/3/search/movie?api_key=${variables.api_key}&language=en-US&query=${name}&page=1&include_adult=false`
 

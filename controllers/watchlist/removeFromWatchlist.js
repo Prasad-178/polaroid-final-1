@@ -1,9 +1,7 @@
 const user = require("../../models/user")
 const session = require("../../session/session")
 
-const removeFromWatchlist = async (req, res) => {
-    const { item } = req.body
-
+const removeFromWatchlist = async (item) => {
     let existingUser
     try {
         existingUser = await user.findOne({ email: session.email }).exec()
@@ -16,8 +14,8 @@ const removeFromWatchlist = async (req, res) => {
         return
     }
 
-    existingUser.planToWatch.filter((x) => {
-        return x!==item
+    existingUser.planToWatch = existingUser.planToWatch.filter((x) => {
+        return x.id!==item
     })
 
     try {

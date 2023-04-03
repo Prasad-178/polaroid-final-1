@@ -17,7 +17,6 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const data = await getMovieByName(req.body.name);
-  console.log(data)
   res.render("search", {
     check: session.isLoggedIn,
     username: session.username,

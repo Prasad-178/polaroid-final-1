@@ -11,6 +11,10 @@ const deleteList = require("../controllers/list/deleteList");
 const getMyListByName = require("../controllers/list/getMyListByName");
 const getUser = require("../controllers/user/getUser");
 const settings = require("../controllers/user/settings");
+const getList = require("../controllers/list/getListByUserandListName");
+const getListsByUser = require("../controllers/list/getListsOfUser");
+const removeFromWatchlist = require("../controllers/watchlist/removeFromWatchlist");
+const removeFromWatched = require("../controllers/watched/removeFromWatched");
 const router = Router();
 
 router.get("/login", (req, res) => {
@@ -69,7 +73,7 @@ router.get("/profile", async (req, res) => {
 
 router.get("/list/:listName", async (req, res) => {
   let listName = req.params.listName;
-  listName.replace("%20", " ");
+  listName.split("%20").join(" ") ;
 
   const list = await getMyListByName(listName);
   res.render("list_page", {
@@ -86,21 +90,41 @@ router.get("/list/:listName", async (req, res) => {
 
 router.get("/watchlist", async (req, res) => {
   const user = await getUser()
+  console.log(user)
   res.render("watchlist", {
     check: true,
     username: session.username,
     email: session.email,
-    data: user.planToWatch
+    data: user.planToWatch,
+    userWatchList: session.username,
+    editable: true
   });
 });
 
-router.get("/watchedfilms", (req, res) => {
+router.get("/watchedfilms", async (req, res) => {
+  const user = await getUser()
+  console.log(user)
   res.render("watched_films", {
     check: true,
     username: session.username,
     email: session.email,
+    data: user.watched,
+    userWatchList: session.username,
+    editable: true
   });
 });
+
+router.post('/watchlist/:id', async (req, res) => {
+  const id = req.params.id
+  await removeFromWatchlist(id)
+  res.redirect("/user/watchlist")
+})
+
+router.post('/watched/:id', async (req, res) => {
+  const id = req.params.id
+  await removeFromWatched(id)
+  res.redirect("/user/watchedfilms")
+})
 
 router.get("/list", async (req, res) => {
   const lists = await getMyLists();
@@ -115,7 +139,7 @@ router.get("/list", async (req, res) => {
 
 router.post("/list/delete/:listName", async (req, res) => {
   let listName = req.params.listName;
-  listName.replace("%20", " ");
+  listName.split("%20").join(" ") ;
   await deleteList(listName);
 
   res.redirect("/user/list");

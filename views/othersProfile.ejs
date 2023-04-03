@@ -9,12 +9,12 @@
       <div class="profile-metadata">
           <div class="profile-name"> <%= data.username %> </div>
           <% if (!currentUser && !data.followers.includes(email)) { %>
-            <form method="post" action=<%= "/profile/follow/" + data.username.replace(" ", "%20") %>>
+            <form method="post" action=<%= "/profile/follow/" + data.username.split(" ").join("%20") %>>
               <button class="followButton" type="submit">FOLLOW +</button>
             </form>
           <% } %>
           <% if (!currentUser && data.followers.includes(email)) { %>
-            <form method="post" action=<%= "/profile/unfollow/" + data.username.replace(" ", "%20") %>>
+            <form method="post" action=<%= "/profile/unfollow/" + data.username.split(" ").join("%20") %>>
               <button class="followButton" type="submit"> FOLLOWING ✅ </button>
             </form>
           <% } %>
@@ -28,37 +28,37 @@
         <% if (!data.watched) { %>
           <div class="social-component-counter"> 0 </div>
         <% } %>
-        <a href= <%= "/watchedfilms/"+data.username.replace(" ", "%20") %> class="social-component-name">films</a>
+        <a href= <%= "/watchedfilms/"+data.username.split(" ").join("%20") %> class="social-component-name">films</a>
       </div>
       <div class="social-component">
           <div class="social-component-counter">0</div>
-          <a href= <%= "/lists/"+data.username.replace(" ", "%20") %> class="social-component-name">lists</a>
+          <a href= <%= "/lists/"+data.username.split(" ").join("%20") %> class="social-component-name">lists</a>
       </div>
       <div class="social-component">
           <div class="social-component-counter"> <%= data.following.length %> </div>
-          <a href= <%= "/following/"+data.username.replace(" ", "%20") %> class="social-component-name">following</a>
+          <a href= <%= "/following/"+data.username.split(" ").join("%20") %> class="social-component-name">following</a>
       </div>
       <div class="social-component">
           <div class="social-component-counter"> <%= data.followers.length %> </div>
-          <a href= <%= "/followers/"+data.username.replace(" ", "%20") %> class="social-component-name">followers</a>
+          <a href= <%= "/followers/"+data.username.split(" ").join("%20") %> class="social-component-name">followers</a>
       </div>
     </div>
   </div>
   <div class="select-section">
     <div class="nav-link">
-      <a href= <%= "/profile/"+data.username.replace(" ", "%20") %> class="section-name  active">profile</a>
+      <a href= <%= "/profile/"+data.username.split(" ").join("%20") %> class="section-name  active">profile</a>
     </div>
     <div class="nav-link">
-      <a href= <%= "/watchedfilms/"+data.username.replace(" ", "%20") %> class="section-name">watched films</a>
+      <a href= <%= "/watchedfilms/"+data.username.split(" ").join("%20") %> class="section-name">watched films</a>
     </div>
     <div class="nav-link">
-      <a href= <%= "/watchlist/"+data.username.replace(" ", "%20") %> class="section-name">watchlist</a>
+      <a href= <%= "/watchlist/"+data.username.split(" ").join("%20") %> class="section-name">watchlist</a>
     </div>
     <div class="nav-link">
-      <a href= <%= "/lists/"+data.username.replace(" ", "%20") %> class="section-name">list</a>
+      <a href= <%= "/lists/"+data.username.split(" ").join("%20") %> class="section-name">lists</a>
     </div>
     <div class="nav-link">
-      <a href= <%= "/network/"+data.username.replace(" ", "%20") %> class="section-name">network</a>
+      <a href= <%= "/network/"+data.username.split(" ").join("%20") %> class="section-name">network</a>
     </div>
   </div>
 

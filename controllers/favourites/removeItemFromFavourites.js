@@ -1,9 +1,7 @@
 const user = require("../../models/user")
 const session = require("../../session/session")
 
-const removeFromFavourites = async (req, res) => {
-    const { item } = req.body
-
+const removeFromFavourites = async (item) => {
     let existingUser
     try {
         existingUser = await user.findOne({ email: session.email }).exec()
@@ -13,7 +11,7 @@ const removeFromFavourites = async (req, res) => {
     }
 
     existingUser.favourites = existingUser.favourites.filter((x) => {
-        return x !== item
+        return x.id !== item
     })
 
     try {

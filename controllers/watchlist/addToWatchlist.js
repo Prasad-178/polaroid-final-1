@@ -1,9 +1,8 @@
+const getMovieById = require("../../api/getMovieById")
 const user = require("../../models/user")
 const session = require("../../session/session")
 
-const addToWatchlist = async (req, res) => {
-    const { item } = req.body
-
+const addToWatchlist = async (item) => {
     let existingUser
     try {
         existingUser = await user.findOne({ email: session.email }).exec()
@@ -16,7 +15,17 @@ const addToWatchlist = async (req, res) => {
         return
     }
 
-    existingUser.planToWatch.push(item)
+    for (let i=0; i<existingUser.planToWatch.length; i++) {
+        if (existingUser.planToWatch[i].id === item) {
+            return
+        }
+    }
+
+    const movieData = await getMovieById(item)
+    existingUser.planToWatch.push({
+        id: item,
+        poster_path: movieData.poster_path
+    })
 
     try {
         await existingUser.save()
