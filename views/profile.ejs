@@ -19,16 +19,16 @@
           <a href="/user/watchedfilms" class="social-component-name">films</a>
       </div>
       <div class="social-component">
-          <div class="social-component-counter">0</div>
+          <div class="social-component-counter"> <%=listLength%> </div>
           <a href="/user/list" class="social-component-name">lists</a>
       </div>
       <div class="social-component">
           <div class="social-component-counter"> <%= data.following.length %> </div>
-          <a href="#" class="social-component-name">following</a>
+          <a href=<%="/following/"+username.split("%20").join(" ")%> class="social-component-name">following</a>
       </div>
       <div class="social-component">
           <div class="social-component-counter"> <%= data.followers.length %> </div>
-          <a href="#" class="social-component-name">followers</a>
+          <a href=<%="/followers/"+username.split("%20").join(" ")%> class="social-component-name">followers</a>
       </div>
     </div>
   </div>
@@ -46,7 +46,7 @@
       <a href="/user/list" class="section-name">list</a>
     </div>
     <div class="nav-link">
-      <a href="/user/network" class="section-name">network</a>
+      <a href="/user/followers" class="section-name">network</a>
     </div>
   </div>
 
@@ -61,7 +61,7 @@
   </div>
 
   <div class="section-heading">recently watched</div>
-  <% if (data.favourites.length===0) { %>
+  <% if (data.watched.length===0) { %>
     <p style="color: white;">No movies added to watched yet!</p>
   <% } %>
   <div class="grid-container">
@@ -69,39 +69,6 @@
       <div class="grid-img-container"> <a href=<%= "/film/"+data.watched[i].id %>> <img class="grid-img" src=<%= "https://image.tmdb.org/t/p/original/"+data.watched[i].poster_path %> alt="image"> </a> </div>
     <% } %>
   </div>
-
-
-  <!-- <div class="section-heading">
-    <div>recent reviews</div>
-  </div>
-  <div class="element-container">
-    <div class="film-image-container">
-      <img class="film-image" src="/assets/filmimg.jpg" alt="image">
-    </div>
-    <div class="film-content">
-      <div class="film-header">
-        <a class="film-name" href="/film">Avatar: The Way of Water</a>
-        <div class="film-year">2022</div>
-      </div>
-      <div class="film-review">
-        All time best movie
-      </div>
-    </div>
-  </div> -->
-  <!-- <div class="element-container">
-    <div class="film-image-container">
-      <img class="film-image" src="/assets/list_image.jpg" alt="image">
-    </div>
-    <div class="film-content">
-      <div class="film-header">
-        <a class="film-name" href="/film">Maggie</a>
-        <div class="film-year">2015</div>
-      </div>
-      <div class="film-review">
-        All time best movie
-      </div>
-    </div>
-  </div> -->
 </div>
 <script src="/scripts/profile.js" charset="utf-8"></script>
 <%- include('./partials/footer.ejs') %>

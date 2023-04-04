@@ -30,6 +30,8 @@ const removeFromWatched = require("../controllers/watched/removeFromWatched");
 const checkIfFavourite = require("../controllers/user/checkIfFavourite");
 const checkIfInWatchlist = require("../controllers/user/checkIfInWatchlist");
 const checkIfWatched = require("../controllers/user/checkIfWatched");
+const getFollowerDetails = require("../controllers/user/getFollowerDetails");
+const getFollowingDetails = require("../controllers/user/getFollowingDetails");
 const getTrendingListsToday = require("../api/getTrendingLists").day;
 const getTrendingListsthisWeek = require("../api/getTrendingLists").week;
 
@@ -63,6 +65,33 @@ router.get("/booking", (req, res) => {
     email: session.email,
   });
 });
+
+router.get('/followers/:username', async (req, res) => {
+  let id = req.params.username
+  id = id.split("%20").join(" ")
+  const data = await getFollowerDetails(id)
+  res.render('follower', {
+    check: true,
+    username: session.username,
+    email: session.email,
+    data: data,
+    id: id
+  })
+})
+
+router.get('/following/:username', async (req, res) => {
+  let id = req.params.username
+  id = id.split("%20").join(" ")
+  const data = await getFollowingDetails(id)
+  // console.log(id, data)
+  res.render('following', {
+    check: true,
+    username: session.username,
+    email: session.email,
+    data: data,
+    id: id
+  })
+})
 
 router.get('/watchlist/:username', async (req, res) => {
   let username = req.params.username
@@ -276,18 +305,19 @@ router.get("/about", (req, res) => {
 
 router.get('/profile/:name', async (req, res) => {
   const name = req.params.name.split("%20").join(" ") 
-  let currentUser
   if (name == session.username) {
     res.redirect('/user/profile')
     return
   } 
   const user = await getUserByName(name)
+  console.log(user)
   res.render("othersProfile", {
     check: session.isLoggedIn,
     username: session.username,
     email: session.email,
     currentUser: false,
-    data: user,
+    data: user.user,
+    listLength: user.listLength
   });
 })
 
@@ -352,7 +382,7 @@ router.get("/list/add/:listName/:id", async (req, res) => {
   const id = req.params.id
   const result = await appendToList(listName, id)
 
-  res.redirect('/user/list/')
+  res.redirect('/user/list/'+listName)
 })
 
 router.post("/film/:id", addReview)

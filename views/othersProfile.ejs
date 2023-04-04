@@ -31,7 +31,7 @@
         <a href= <%= "/watchedfilms/"+data.username.split(" ").join("%20") %> class="social-component-name">films</a>
       </div>
       <div class="social-component">
-          <div class="social-component-counter">0</div>
+          <div class="social-component-counter"> <%= data.listLength || "0" %> </div>
           <a href= <%= "/lists/"+data.username.split(" ").join("%20") %> class="social-component-name">lists</a>
       </div>
       <div class="social-component">
@@ -58,7 +58,7 @@
       <a href= <%= "/lists/"+data.username.split(" ").join("%20") %> class="section-name">lists</a>
     </div>
     <div class="nav-link">
-      <a href= <%= "/network/"+data.username.split(" ").join("%20") %> class="section-name">network</a>
+      <a href= <%= "/followers/"+data.username.split(" ").join("%20") %> class="section-name">network</a>
     </div>
   </div>
 

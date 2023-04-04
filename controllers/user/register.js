@@ -28,7 +28,7 @@ const register = async (req, res) => {
     }
 
     if (existingUser) {
-        console.log(err)
+        // console.log(err)
 
         res.render('register', { error: "A user with this username already exists!" })
         return

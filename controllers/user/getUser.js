@@ -1,4 +1,5 @@
 const User = require('../../models/user')
+const List = require('../../models/list')
 const session = require('../../session/session')
 
 const getUser = async () => {
@@ -9,7 +10,14 @@ const getUser = async () => {
     console.log(err)
   }
 
-  return user
+  let lists = await List.find({ createdBy: session.username }).exec()
+
+  let data = {}
+  data.user = user
+  data.lists = lists.length
+  console.log(data)
+
+  return data
 }
 
 module.exports = getUser

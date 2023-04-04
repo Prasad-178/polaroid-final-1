@@ -1,4 +1,5 @@
 const User = require('../../models/user')
+const List = require('../../models/list')
 
 const getUserByName = async (name) => {
   let user
@@ -8,7 +9,13 @@ const getUserByName = async (name) => {
     console.log(err)
   }
 
-  return user
+  let lists = await List.find({ createdBy: name }).exec()
+
+  let data = {}
+  data.user = user
+  data.listLength = lists.length
+
+  return data
 }
 
 module.exports = getUserByName

@@ -67,7 +67,8 @@ router.get("/profile", async (req, res) => {
     username: session.username,
     email: session.email,
     currentUser: true,
-    data: user,
+    data: user.user,
+    listLength: user.lists
   });
 });
 

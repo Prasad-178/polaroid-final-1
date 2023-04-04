@@ -14,7 +14,7 @@ email verification (page - ON HOLD)
   -> (update the user model)
   -> cannot book tickets without verifying email
 
-add to list/favourites/watchlist/watched (dropdown inside film page) - DONE
+add to list/favourites/watchlist/watched (dropdown inside film page) - DONE WITH BACKEND
 
 --------------------------------------------------------
 optional - contact us form (title + description + email)
