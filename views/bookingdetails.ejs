@@ -6,20 +6,53 @@
 <div class="main">
     <form method="post" action="/bookingdetails" onchange="return validateForm()">
         <div class="contact-essentials">
-        <div class="email-div">
-            <label for="email-input" class="email-label">Enter your email-address</label>
-            <input type="text" class="email-box" placeholder="input@example.com" id="email-input" required autocomplete="off"
-            oninvalid="this.setCustomValidity('Email Address can not be empty')"
-            oninput="this.setCustomValidity('')">
+          <div class="email-div">
+              <label for="email-input" class="email-label">Enter your email-address</label>
+              <input type="text" class="email-box" placeholder="input@example.com" id="email-input" required autocomplete="off"
+              oninvalid="this.setCustomValidity('Email Address can not be empty')"
+              oninput="this.setCustomValidity('')">
+          </div>
+          <div class="email-div">
+              <label for="mobile-input" class="email-label">Enter your mobile number</label>
+              <input type="text" class="email-box" id="mobile-input" placeholder="(+91) 9874563210" required autocomplete="off"
+              oninvalid="this.setCustomValidity('Mobile Number can not be empty')"
+              oninput="this.setCustomValidity('')">
+          </div>
+          <div class="error-div" id="alert-zone-1"></div>
+          <div class="error-div" id="alert-zone-2"></div>
         </div>
-        <div class="email-div">
-            <label for="mobile-input" class="email-label">Enter your mobile number</label>
-            <input type="text" class="email-box" id="mobile-input" placeholder="(+91) 9874563210" required autocomplete="off"
-            oninvalid="this.setCustomValidity('Mobile Number can not be empty')"
+
+
+        <div class="selector-container">
+          <label class="movie-selector-label" for ="vanue">Select A Vanue</label>
+          <select id="vanue" class="movie-selector" required autocomplete="off"
+            oninvalid="this.setCustomValidity('Please select a vanue')"
             oninput="this.setCustomValidity('')">
-        </div>
-        <div class="error-div" id="alert-zone-1"></div>
-        <div class="error-div" id="alert-zone-2"></div>
+              <option value="">--Select a vanue--</option>
+              <option value="v1">Forum Value Mall</option>
+              <option value="v2">Chennai CSK Mall</option>
+              <option value="v3">Mumbai Indians Mall</option>
+          </select>
+          <label class="movie-selector-label" for ="date">Select A Date</label>
+          <select id="date" class="movie-selector" required autocomplete="off"
+            oninvalid="this.setCustomValidity('Please select a date')"
+            oninput="this.setCustomValidity('')">
+              <option value="">--Select a date--</option>
+              <option value="d1">17th March, Friday</option>
+              <option value="d2">19th March, Sunday</option>
+              <option value="d3">20th March, Monday</option>
+          </select>
+          <label class="movie-selector-label" for ="movie">Select A Movie</label>
+          <select id="movie" class="movie-selector" required autocomplete="off"
+            oninvalid="this.setCustomValidity('Please select a show timing')"
+            oninput="this.setCustomValidity('')">
+              <option value="">--Select your show--</option>
+              <option value="t1">Timings: 9:00am</option>
+              <option value="t2">Timings: 12:20pm</option>
+              <option value="t3">Timings: 4:00pm</option>
+              <option value="t4">Timings: 6:30pm</option>
+              <option value="t5">Timings: 9:00pm</option>
+          </select>
         </div>
 
         <div>
