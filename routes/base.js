@@ -216,7 +216,7 @@ router.get("/success", (req, res) => {
   res.render("success");
 });
 
-router.get("/bookingdetails", (req, res) => {
+router.get("/bookingdetails/:id", (req, res) => {
   res.render("bookingdetails", {
     check: session.isLoggedIn,
     username: session.username,

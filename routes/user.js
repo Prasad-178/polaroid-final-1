@@ -15,6 +15,7 @@ const getList = require("../controllers/list/getListByUserandListName");
 const getListsByUser = require("../controllers/list/getListsOfUser");
 const removeFromWatchlist = require("../controllers/watchlist/removeFromWatchlist");
 const removeFromWatched = require("../controllers/watched/removeFromWatched");
+const deleteAccount = require("../controllers/user/deleteAccount");
 const router = Router();
 
 router.get("/login", (req, res) => {
@@ -24,6 +25,8 @@ router.get("/login", (req, res) => {
 router.get("/register", (req, res) => {
   res.render("register", { error: "" });
 });
+
+router.get('/deactivate', deleteAccount)
 
 router.post("/login", login);
 

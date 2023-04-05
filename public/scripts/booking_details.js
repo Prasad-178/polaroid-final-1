@@ -186,6 +186,12 @@ function refreshPage(){
     window.location.reload();
 }
 
+// .onclick= {
+//   localStorage.setjndd////..
+
+//   location.href = "/booking/filmid/venueid/date/timing/3"
+// }
+
 document.getElementById('email-input').addEventListener("focusin", onFocusinEmail);
 document.getElementById('email-input').addEventListener("focusout", onFocusoutEmail);
 

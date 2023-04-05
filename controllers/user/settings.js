@@ -21,7 +21,7 @@ const settings = async (req, res) => {
     console.log(err)
   }
 
-  if (checkUsername) {
+  if (checkUsername && checkUsername.email !== email) {
     return {
       success: false,
       error: "Username already taken!",

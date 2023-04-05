@@ -197,7 +197,7 @@
         Share
       </button> -->
       <% if (check===true) { %>
-        <button class="bookTickets" onclick="location.href='/bookingdetails'">
+        <button class="bookTickets" onclick="location.href='<%= '/bookingdetails/'+data.id %>'">
           Book Tickets
         </button>
       <% } %>
