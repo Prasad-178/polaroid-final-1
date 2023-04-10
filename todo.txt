@@ -1,20 +1,6 @@
-forgot password (page - 2 pages) - assigned to Urjasvi
-  -> enter email id (text field)
-  -> send otp (button)
-
-  -> enter otp (text field)
-  -> enter new password (text field)
-  -> confirm new password (text field)
-  -> submit button
-  (done by sunday/monday)
-
-email verification (page - ON HOLD)
-  -> enter otp
-  -> submit button
-  -> (update the user model)
-  -> cannot book tickets without verifying email
-
-add to list/favourites/watchlist/watched (dropdown inside film page) - DONE WITH BACKEND
+create google account
+name - Polaroid
+email - polaroid.support@gmail.com
 
 --------------------------------------------------------
 optional - contact us form (title + description + email)
@@ -34,15 +20,8 @@ arka instructions
   -> use this number for js validation
   (done by wednesday)
 
-network page - assigned to arka
-(done soon)
-network backend - assigned to prasad
-(done by wednesday)
-
 change lgbtq logo everywhere - assigned to kalyan
 (done soon)
-
-booking history instead of reviews (page)
 
 add delete review
 
@@ -52,6 +31,13 @@ add delete review
 
 
 
+email verification (page - ON HOLD)
+  -> enter otp
+  -> submit button
+  -> (update the user model)
+  -> cannot book tickets without verifying email
+
+booking history instead of reviews (page) - ON HOLD
 
 
 
@@ -66,6 +52,23 @@ add delete review
 
 
 
+
+
+
+
+
+forgot password (page - 2 pages) - assigned to Urjasvi - DONE
+  -> enter email id (text field)
+  -> send otp (button)
+
+  -> enter otp (text field)
+  -> enter new password (text field)
+  -> confirm new password (text field)
+  -> submit button
+  (done by sunday/monday)
+add to list/favourites/watchlist/watched (dropdown inside film page) - DONE WITH BACKEND
+network page - assigned to arka - DONE
+network backend - assigned to prasad - DONE
 many backend bugs (idk how to fix right now) - DONE
 booking details page form bug - DONE
   -> url : localhost:3500/bookingform/<movieId>
