@@ -102,7 +102,7 @@ router.get('/watchlist/:username', async (req, res) => {
     check: session.isLoggedIn,
     username: session.username,
     email: session.email,
-    data: user.planToWatch,
+    data: user.user.planToWatch,
     userWatchList:  username,
     editable: false
   })
@@ -117,8 +117,8 @@ router.get('/watchedfilms/:username', async (req, res) => {
     check: session.isLoggedIn,
     username: session.username,
     email: session.email,
-    data: user.watched,
-    userWatchList:  username,
+    data: user.user.watched,
+    userWatchList: username,
     editable: false
   })
 })

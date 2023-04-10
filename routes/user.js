@@ -16,6 +16,8 @@ const getListsByUser = require("../controllers/list/getListsOfUser");
 const removeFromWatchlist = require("../controllers/watchlist/removeFromWatchlist");
 const removeFromWatched = require("../controllers/watched/removeFromWatched");
 const deleteAccount = require("../controllers/user/deleteAccount");
+const forgotPasswordOTP = require("../controllers/user/forgotPasswordOTP");
+const resetPassword = require("../controllers/user/resetPassword");
 const router = Router();
 
 router.get("/login", (req, res) => {
@@ -25,6 +27,23 @@ router.get("/login", (req, res) => {
 router.get("/register", (req, res) => {
   res.render("register", { error: "" });
 });
+
+router.get('/forgotpassword', (req, res) => {
+  res.render('forgot_password_1', {
+    error: ""
+  })
+})
+
+router.get('/resetpassword', (req, res) => {
+  res.render('forgot_password_2', {
+    error: "",
+    email: ""
+  })
+})
+
+router.post('/forgotpassword', forgotPasswordOTP)
+
+router.post('/resetpassword', resetPassword)
 
 router.get('/deactivate', deleteAccount)
 
@@ -99,7 +118,7 @@ router.get("/watchlist", async (req, res) => {
     check: true,
     username: session.username,
     email: session.email,
-    data: user.planToWatch,
+    data: user.user.planToWatch,
     userWatchList: session.username,
     editable: true
   });
@@ -108,11 +127,12 @@ router.get("/watchlist", async (req, res) => {
 router.get("/watchedfilms", async (req, res) => {
   const user = await getUser()
   console.log(user)
+  console.log("wae is : ", typeof user.watched)
   res.render("watched_films", {
     check: true,
     username: session.username,
     email: session.email,
-    data: user.watched,
+    data: user.user.watched,
     userWatchList: session.username,
     editable: true
   });
