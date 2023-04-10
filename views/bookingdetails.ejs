@@ -24,11 +24,11 @@
 
 
         <div class="selector-container">
-          <label class="movie-selector-label" for ="venue">Select A Venue</label>
+          <label class="movie-selector-label" for ="vanue">Select A Vanue</label>
           <select id="venue" class="movie-selector" required autocomplete="off"
-            oninvalid="this.setCustomValidity('Please select a venue')"
+            oninvalid="this.setCustomValidity('Please select a vanue')"
             oninput="this.setCustomValidity('')">
-              <option value="">--Select a venue--</option>
+              <option value="">--Select a vanue--</option>
               <option value="v1">Forum Value Mall</option>
               <option value="v2">Chennai CSK Mall</option>
               <option value="v3">Mumbai Indians Mall</option>
@@ -56,7 +56,7 @@
         </div>
 
         <div>
-          <div class="personal-info-div">
+          <div class="personal-info-div" name="person-personal-info">
             <div class="email-div">
                 <label for="name-input" class="email-label">Enter the name</label>
                 <input type="text" class="email-box personal-info" id="name-input" placeholder="Alex John" required autocomplete="off"
@@ -101,7 +101,7 @@
         <button type="button" class="btn btn-outline-warning" style="width: 37%" id="add-button" onclick="addPerson()">Add Person</button>
         </div>
 
-        <button type="submit" onsubmit="location.href='/booking'" class="btn btn-outline-info" style="width: 100%" id="submit-button" disabled>Submit</button>
+        <button type="submit" onclick="submit_form()" class="btn btn-outline-info" style="width: 100%" id="submit-button" disabled>Submit</button>
     </form>
 </div>
 <script src="/scripts/booking_details.js" charset="utf-8"></script>

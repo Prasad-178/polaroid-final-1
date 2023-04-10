@@ -1,5 +1,6 @@
 var isInvalidEmail = false;
 var isInvalidMobile = false;
+var personal_info_counter = 1;
 
 function validateForm() {
   var emailValidation;
@@ -178,12 +179,57 @@ function multiplyForm(node) {
 
 function addPerson() {
   multiplyForm(document.querySelector('.personal-info-div'));
-
+  personal_info_counter++;
   setDateRange();
 }
 
 function refreshPage(){
-    window.location.reload();
+  personal_info_counter = 1;
+  localStorage.clear();
+  window.location.reload();
+}
+
+function submit_form() {
+  console.log("trigger");
+  localStorage.setItem("email", document.getElementById('email-input').value);
+  localStorage.setItem("mobile", document.getElementById('mobile-input').value);
+
+  localStorage.setItem("venue", document.getElementById('venue').value);
+  localStorage.setItem("date", document.getElementById('date').value);
+  localStorage.setItem("movie", document.getElementById('movie').value);
+
+
+  let info_array = [];
+
+  localStorage.setItem("info_array", JSON.stringify(info_array));
+
+  var person_infos = document.getElementsByName('person-personal-info');
+
+  for (var i = 0; i < person_infos.length; i++) {
+    var person_infos_children = person_infos[i].children;
+    let temp_obj = [];
+
+    for (var j = 0; j < person_infos_children.length; j++) {
+
+      let temp_child = person_infos_children[j].children;
+      let temp = temp_child[1].value;
+      temp_obj.push(temp);
+    }
+
+    info_array = JSON.parse(localStorage.getItem("info_array") || "[]");
+    info_array.push(temp_obj);
+
+
+    localStorage.setItem("info_array", JSON.stringify(info_array));
+  }
+
+  // console.log(localStorage.getItem("info_array"));
+
+  // console.log(personal_info_counter);
+
+  let url_string = '/booking'+personal_info_counter;
+
+  location.href = url_string;
 }
 
 // .onclick= {
