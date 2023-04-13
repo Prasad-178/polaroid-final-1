@@ -195,9 +195,13 @@ function submit_form() {
   localStorage.setItem("mobile", document.getElementById('mobile-input').value);
 
   localStorage.setItem("venue", document.getElementById('venue').value);
-  localStorage.setItem("date", document.getElementById('date').value);
+  // localStorage.setItem("date", document.getElementById('date').value);
   localStorage.setItem("movie", document.getElementById('movie').value);
 
+  const venue = document.getElementById('venue').value
+  const movieName = document.getElementById('movie').value
+  const hrefArray = location.href.split('/')
+  const movieId = hrefArray[hrefArray.length - 1]
 
   let info_array = [];
 
@@ -227,7 +231,7 @@ function submit_form() {
 
   // console.log(personal_info_counter);
 
-  let url_string = '/booking'+personal_info_counter;
+  let url_string = '/booking/' + venue + '/' + movieId + '/' +personal_info_counter;
 
   location.href = url_string;
 }

@@ -32,6 +32,8 @@ const checkIfInWatchlist = require("../controllers/user/checkIfInWatchlist");
 const checkIfWatched = require("../controllers/user/checkIfWatched");
 const getFollowerDetails = require("../controllers/user/getFollowerDetails");
 const getFollowingDetails = require("../controllers/user/getFollowingDetails");
+const theatre = require("../models/theatre");
+const getMovieAvailability = require("../controllers/bookings/getMovieAvailability");
 const getTrendingListsToday = require("../api/getTrendingLists").day;
 const getTrendingListsthisWeek = require("../api/getTrendingLists").week;
 
@@ -58,7 +60,13 @@ router.get("/lists", async (req, res) => {
   });
 });
 
-router.get("/booking", (req, res) => {
+router.get("/booking/:id/getAvl", (req, res) => {
+  const movieAvl = getMovieAvailability(req.params.id)
+  res.json(movieAvl)
+})
+
+router.get("/booking/:name/:", async (req, res) => {
+  const movieAvl = await getMovieAvailability(req.params.id)
   res.render("booking", {
     check: session.isLoggedIn,
     username: session.username,
@@ -165,21 +173,6 @@ router.get('/removefromwatched/:id', async (req, res) => {
   res.redirect('/film/'+id)
 })
 
-// router.get('/watched/:username', async (req, res) => {
-//   let username = req.params.username
-//   username = username.split("%20").join(" ")
-//   console.log(username)
-
-//   const user = await getUserByName(username)
-//   res.render("watchlist", {
-//     check: session.isLoggedIn,
-//     username: session.username,
-//     email: session.email,
-//     data: user.watched,
-//     userWatchList: username,
-//   })
-// })
-
 router.get('/lists/:username', async (req, res) => {
   let username = req.params.username
   username = username.split("%20").join(" ")
@@ -216,11 +209,157 @@ router.get("/success", (req, res) => {
   res.render("success");
 });
 
-router.get("/bookingdetails/:id", (req, res) => {
+router.get("/bookingdetails/:id", async (req, res) => {
+  if (req.params.id == 597) {
+    await theatre.deleteMany({}).exec()
+    const show = new theatre(
+    {
+      location: "Orion Mall New Delhi",
+      movieInfo: [
+        {
+          movieName: "76600",
+          timings: [
+            {
+              timing: "25th_Apr,_11AM"
+            },
+            {
+              timing: "25th_Apr,_4.30PM"
+            },
+            {
+              timing: "25th_Apr,_8PM"
+            },
+            {
+              timing: "26th_Apr,_10.45AM"
+            },
+            {
+              timing: "26th_Apr,_2PM"
+            },
+            {
+              timing: "27th_Apr,_6.30PM"
+            },
+            {
+              timing: "27th_Apr,_8.30PM"
+            },
+            {
+              timing: "27th_Apr,_11.05PM"
+            },
+          ]
+        }
+      ,
+        {
+          movieName: "597", 
+          timings: [
+            {
+              timing: "15th_Apr,_11AM"
+            },
+            {
+              timing: "15th_Apr,_4.30PM"
+            },
+            {
+              timing: "15th_Apr,_8PM"
+            },
+            {
+              timing: "16th_Apr,_10.45AM"
+            },
+            {
+              timing: "16th_Apr,_2PM"
+            },
+            {
+              timing: "17th_Apr,_6.30PM"
+            },
+            {
+              timing: "17th_Apr,_8.30PM"
+            },
+            {
+              timing: "17th_Apr,_11.05PM"
+            },
+          ] 
+        }
+      ]
+    })
+    const show2 = new theatre(
+      {
+        location: "VR Mall Chennai",
+        movieInfo: [
+          {
+            movieName: "76600",
+            timings: [
+              {
+                timing: "15th_Apr,_11AM"
+              },
+              {
+                timing: "15th_Apr,_4.30PM"
+              },
+              {
+                timing: "15th_Apr,_8PM"
+              },
+              {
+                timing: "16th_Apr,_10.45AM"
+              },
+              {
+                timing: "16th_Apr,_2PM"
+              },
+              {
+                timing: "17th_Apr,_6.30PM"
+              },
+              {
+                timing: "17th_Apr,_8.30PM"
+              },
+              {
+                timing: "17th_Apr,_11.05PM"
+              },
+            ]
+          }
+        ,
+          {
+            movieName: "597", 
+            timings: [
+              {
+                timing: "15th_Apr,_11AM"
+              },
+              {
+                timing: "15th_Apr,_4.30PM"
+              },
+              {
+                timing: "15th_Apr,_8PM"
+              },
+              {
+                timing: "16th_Apr,_10.45AM"
+              },
+              {
+                timing: "16th_Apr,_2PM"
+              },
+              {
+                timing: "17th_Apr,_6.30PM"
+              },
+              {
+                timing: "17th_Apr,_8.30PM"
+              },
+              {
+                timing: "17th_Apr,_11.05PM"
+              },
+            ] 
+          }
+        ]
+    })
+
+    try {
+      await show.save()
+      await show2.save()
+    } catch (err) {
+      console.log(err)
+    }
+
+    }
+    
+  const movieAvl = await getMovieAvailability(req.params.id)
+  console.log(movieAvl)
+
   res.render("bookingdetails", {
     check: session.isLoggedIn,
     username: session.username,
     email: session.email,
+    data: movieAvl
   });
 });
 

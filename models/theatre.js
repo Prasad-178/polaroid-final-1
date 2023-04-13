@@ -17,20 +17,23 @@ const defaultSeating =[
 const theatreSchema = new schema({
   location: {
     type: String,
-    required: true
-  },
-  movieName: {
-    type: String,
-    required: true
-  },
-  timing: {
-    type: String,
-    required: true
-  },
-  seating: {
-    type: [[Number]],
     required: true,
-    default: defaultSeating
+    unique: true
+  },
+  movieInfo: {
+    type: [
+      {
+        movieName: String,
+        timings: [{
+          timing: String,
+          seating: {
+            type: [[Number]],
+            required: false,
+            default: defaultSeating
+          }
+        }]
+      }
+    ]
   }
 }, {versionKey: false})
 

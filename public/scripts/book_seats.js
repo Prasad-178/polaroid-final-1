@@ -3,6 +3,14 @@ var original_seat_count = retrieve_no_seats();
 // for testing purposes
 // var original_seat_count = 3;
 
+const hrefArray = location.href.split('/')
+const venue = hrefArray[1]
+const movieId = hrefArray[2]
+
+const res = fetch("localhost:3500/booking/"+  + "/getAvl", {
+  method: "GET"
+})
+
 var seat_matrix = [
   [0, 1, 0, 0, 1, 0, 1, 1, 1, 0],
   [0, 1, 0, 0, 1, 0, 1, 1, 1, 0],
