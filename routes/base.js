@@ -209,6 +209,11 @@ router.get("/success", (req, res) => {
   res.render("success");
 });
 
+router.get('/retrievebookingdetails/:id', async (req, res) => {
+  const movieAvl = await getMovieAvailability(req.params.id)
+  res.json(movieAvl)
+})
+
 router.get("/bookingdetails/:id", async (req, res) => {
   if (req.params.id == 597) {
     await theatre.deleteMany({}).exec()

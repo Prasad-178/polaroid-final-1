@@ -2,6 +2,16 @@ var isInvalidEmail = false;
 var isInvalidMobile = false;
 var personal_info_counter = 1;
 
+const urlArray = location.href.split('/')
+const id = urlArray[urlArray.length - 1]
+const fetchUrl = "http://localhost:3500/retrievebookingdetails/"+id
+console.log(fetchUrl)
+fetch(fetchUrl).then((res) => {
+  return res.json()
+}).then((data)=>{
+  console.log(data)
+})
+
 function validateForm() {
   var emailValidation;
   var mobileValidation;
