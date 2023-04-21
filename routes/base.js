@@ -34,8 +34,12 @@ const getFollowerDetails = require("../controllers/user/getFollowerDetails");
 const getFollowingDetails = require("../controllers/user/getFollowingDetails");
 const theatre = require("../models/theatre");
 const getMovieAvailability = require("../controllers/bookings/getMovieAvailability");
+const getSeats = require("../controllers/bookings/getSeats");
+const variables = require("../config");
+const addBooking = require("../controllers/bookings/addBooking");
 const getTrendingListsToday = require("../api/getTrendingLists").day;
 const getTrendingListsthisWeek = require("../api/getTrendingLists").week;
+const stripe = require('stripe')(variables.stripe_secret_key)
 
 // router.use('/', check)
 
@@ -65,12 +69,18 @@ router.get("/booking/:id/getAvl", (req, res) => {
   res.json(movieAvl)
 })
 
-router.get("/booking/:name/:", async (req, res) => {
+router.get("/booking/:venue/:id/:movieTiming", async (req, res) => {
+  const venue = req.params.venue
+  const id = req.params.id
+  const movieTiming = req.params.movieTiming
   const movieAvl = await getMovieAvailability(req.params.id)
+  // console.log(movieAvl)
   res.render("booking", {
     check: session.isLoggedIn,
     username: session.username,
     email: session.email,
+    data: movieAvl[venue],
+    key: variables.stripe_publishable_key
   });
 });
 
@@ -205,9 +215,19 @@ router.get("/list/:username/:listName", async (req, res) => {
   });
 });
 
-router.get("/success", (req, res) => {
+router.get("/payment/success", (req, res) => {
   res.render("success");
 });
+
+router.post('/confirmticket', async (req, res) => {
+  await addBooking(req, res)
+})
+
+router.get('/retrieveseats/:id/:timing/:venue', async (req, res) => {
+  const {id, venue, timing} = req.params
+  const data = await getSeats(id, timing, venue)
+  res.json(data)
+})
 
 router.get('/retrievebookingdetails/:id', async (req, res) => {
   const movieAvl = await getMovieAvailability(req.params.id)
@@ -215,150 +235,149 @@ router.get('/retrievebookingdetails/:id', async (req, res) => {
 })
 
 router.get("/bookingdetails/:id", async (req, res) => {
-  if (req.params.id == 597) {
-    await theatre.deleteMany({}).exec()
-    const show = new theatre(
-    {
-      location: "Orion Mall New Delhi",
-      movieInfo: [
-        {
-          movieName: "76600",
-          timings: [
-            {
-              timing: "25th_Apr,_11AM"
-            },
-            {
-              timing: "25th_Apr,_4.30PM"
-            },
-            {
-              timing: "25th_Apr,_8PM"
-            },
-            {
-              timing: "26th_Apr,_10.45AM"
-            },
-            {
-              timing: "26th_Apr,_2PM"
-            },
-            {
-              timing: "27th_Apr,_6.30PM"
-            },
-            {
-              timing: "27th_Apr,_8.30PM"
-            },
-            {
-              timing: "27th_Apr,_11.05PM"
-            },
-          ]
-        }
-      ,
-        {
-          movieName: "597", 
-          timings: [
-            {
-              timing: "15th_Apr,_11AM"
-            },
-            {
-              timing: "15th_Apr,_4.30PM"
-            },
-            {
-              timing: "15th_Apr,_8PM"
-            },
-            {
-              timing: "16th_Apr,_10.45AM"
-            },
-            {
-              timing: "16th_Apr,_2PM"
-            },
-            {
-              timing: "17th_Apr,_6.30PM"
-            },
-            {
-              timing: "17th_Apr,_8.30PM"
-            },
-            {
-              timing: "17th_Apr,_11.05PM"
-            },
-          ] 
-        }
-      ]
-    })
-    const show2 = new theatre(
-      {
-        location: "VR Mall Chennai",
-        movieInfo: [
-          {
-            movieName: "76600",
-            timings: [
-              {
-                timing: "15th_Apr,_11AM"
-              },
-              {
-                timing: "15th_Apr,_4.30PM"
-              },
-              {
-                timing: "15th_Apr,_8PM"
-              },
-              {
-                timing: "16th_Apr,_10.45AM"
-              },
-              {
-                timing: "16th_Apr,_2PM"
-              },
-              {
-                timing: "17th_Apr,_6.30PM"
-              },
-              {
-                timing: "17th_Apr,_8.30PM"
-              },
-              {
-                timing: "17th_Apr,_11.05PM"
-              },
-            ]
-          }
-        ,
-          {
-            movieName: "597", 
-            timings: [
-              {
-                timing: "15th_Apr,_11AM"
-              },
-              {
-                timing: "15th_Apr,_4.30PM"
-              },
-              {
-                timing: "15th_Apr,_8PM"
-              },
-              {
-                timing: "16th_Apr,_10.45AM"
-              },
-              {
-                timing: "16th_Apr,_2PM"
-              },
-              {
-                timing: "17th_Apr,_6.30PM"
-              },
-              {
-                timing: "17th_Apr,_8.30PM"
-              },
-              {
-                timing: "17th_Apr,_11.05PM"
-              },
-            ] 
-          }
-        ]
-    })
+  // if (req.params.id == 597) {
+  //   await theatre.deleteMany({}).exec()
+  //   const show = new theatre(
+  //   {
+  //     location: "Orion Mall New Delhi",
+  //     movieInfo: [
+  //       {
+  //         movieName: "76600",
+  //         timings: [
+  //           {
+  //             timing: "25th_Apr,_11AM"
+  //           },
+  //           {
+  //             timing: "25th_Apr,_4.30PM"
+  //           },
+  //           {
+  //             timing: "25th_Apr,_8PM"
+  //           },
+  //           {
+  //             timing: "26th_Apr,_10.45AM"
+  //           },
+  //           {
+  //             timing: "26th_Apr,_2PM"
+  //           },
+  //           {
+  //             timing: "27th_Apr,_6.30PM"
+  //           },
+  //           {
+  //             timing: "27th_Apr,_8.30PM"
+  //           },
+  //           {
+  //             timing: "27th_Apr,_11.05PM"
+  //           },
+  //         ]
+  //       }
+  //     ,
+  //       {
+  //         movieName: "597", 
+  //         timings: [
+  //           {
+  //             timing: "15th_Apr,_11AM"
+  //           },
+  //           {
+  //             timing: "15th_Apr,_4.30PM"
+  //           },
+  //           {
+  //             timing: "15th_Apr,_8PM"
+  //           },
+  //           {
+  //             timing: "16th_Apr,_10.45AM"
+  //           },
+  //           {
+  //             timing: "16th_Apr,_2PM"
+  //           },
+  //           {
+  //             timing: "17th_Apr,_6.30PM"
+  //           },
+  //           {
+  //             timing: "17th_Apr,_8.30PM"
+  //           },
+  //           {
+  //             timing: "17th_Apr,_11.05PM"
+  //           },
+  //         ] 
+  //       }
+  //     ]
+  //   })
+  //   const show2 = new theatre(
+  //     {
+  //       location: "VR Mall Chennai",
+  //       movieInfo: [
+  //         {
+  //           movieName: "76600",
+  //           timings: [
+  //             {
+  //               timing: "15th_Apr,_11AM"
+  //             },
+  //             {
+  //               timing: "15th_Apr,_4.30PM"
+  //             },
+  //             {
+  //               timing: "15th_Apr,_8PM"
+  //             },
+  //             {
+  //               timing: "16th_Apr,_10.45AM"
+  //             },
+  //             {
+  //               timing: "16th_Apr,_2PM"
+  //             },
+  //             {
+  //               timing: "17th_Apr,_6.30PM"
+  //             },
+  //             {
+  //               timing: "17th_Apr,_8.30PM"
+  //             },
+  //             {
+  //               timing: "17th_Apr,_11.05PM"
+  //             },
+  //           ]
+  //         }
+  //       ,
+  //         {
+  //           movieName: "597", 
+  //           timings: [
+  //             {
+  //               timing: "15th_Apr,_11AM"
+  //             },
+  //             {
+  //               timing: "15th_Apr,_4.30PM"
+  //             },
+  //             {
+  //               timing: "15th_Apr,_8PM"
+  //             },
+  //             {
+  //               timing: "16th_Apr,_10.45AM"
+  //             },
+  //             {
+  //               timing: "16th_Apr,_2PM"
+  //             },
+  //             {
+  //               timing: "17th_Apr,_6.30PM"
+  //             },
+  //             {
+  //               timing: "17th_Apr,_8.30PM"
+  //             },
+  //             {
+  //               timing: "17th_Apr,_11.05PM"
+  //             },
+  //           ] 
+  //         }
+  //       ]
+  //   })
 
-    try {
-      await show.save()
-      await show2.save()
-    } catch (err) {
-      console.log(err)
-    }
+  //   try {
+  //     await show.save()
+  //     await show2.save()
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
 
-    }
-    
+  //   }
   const movieAvl = await getMovieAvailability(req.params.id)
-  console.log(movieAvl)
+  // console.log(movieAvl)
 
   res.render("bookingdetails", {
     check: session.isLoggedIn,
@@ -376,12 +395,52 @@ router.get("/faq", (req, res) => {
   });
 });
 
-router.get("/payment", (req, res) => {
-  res.render("payment", {
-    check: session.isLoggedIn,
-    username: session.username,
-    email: session.email,
-  });
+router.post("/payment", async (req, res) => {
+  try {
+    const movie = await getMovieById(req.body.id)
+    console.log(movie)
+    const movieName = movie.title
+    // console.log("items is : ", req.body)
+    let seat_string = ""
+    for (let i=0; i<req.body.seat_list.length; i++) {
+      let second = +req.body.seat_list[i]%10
+      second++
+      let first = (Math.floor(req.body.seat_list[i]/10))%10
+      first = String.fromCharCode(65+first)
+
+      // console.log(first, second)
+
+      let final_seat = first.toString() + second.toString()
+
+      seat_string += final_seat + ", "
+    }
+
+    seat_string = seat_string.slice(0, seat_string.length-2)
+    const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        mode:'payment',
+        line_items: [
+          {
+            price_data: {
+              currency: 'inr',
+              product_data: {
+                name: movieName + " at " + req.body.venue.trim(),
+                description: "Seat List : " + seat_string
+              },
+              unit_amount: 100*300
+            },
+            quantity: req.body.seat_list.length
+          }
+        ],
+        success_url: 'http://localhost:3500/payment/success',
+        cancel_url: 'http://localhost:3500/payment/failure'
+    })
+
+    res.json({url:session.url})
+} catch (e) {
+    console.log(e);
+    res.status(500).json({error:e.message})
+}
 });
 
 router.get("/trending/week", async (req, res) => {

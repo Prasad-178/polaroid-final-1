@@ -1,28 +1,23 @@
 var original_seat_count = retrieve_no_seats();
 
-// for testing purposes
-// var original_seat_count = 3;
+localStorage.getItem("")
 
-const hrefArray = location.href.split('/')
-const venue = hrefArray[1]
-const movieId = hrefArray[2]
+const urlArray = location.href.split('/')
+const timing = localStorage.getItem("movie")
+const id = urlArray[urlArray.length - 2]
+const venueName = localStorage.getItem("venue")
+const venueIndex = urlArray[urlArray.length - 3]
+const fetchUrl = "http://localhost:3500/retrieveseats/"+id+"/"+timing+"/"+venueName
 
-const res = fetch("localhost:3500/booking/"+  + "/getAvl", {
-  method: "GET"
+var seat_matrix
+fetch(fetchUrl).then((res) => {
+  return res.json()
+}).then((data) => {
+  console.log(data)
+  seat_matrix = data
+  render_seats()
+  finalize_seat()
 })
-
-var seat_matrix = [
-  [0, 1, 0, 0, 1, 0, 1, 1, 1, 0],
-  [0, 1, 0, 0, 1, 0, 1, 1, 1, 0],
-  [0, 1, 0, 0, 1, 0, 1, 1, 1, 0],
-  [0, 1, 0, 0, 1, 0, 1, 1, 1, 0],
-  [0, 1, 0, 0, 1, 0, 1, 1, 1, 0],
-  [0, 1, 0, 0, 1, 0, 1, 1, 1, 0],
-  [0, 1, 0, 0, 1, 0, 1, 1, 1, 0],
-  [0, 1, 0, 0, 1, 0, 1, 1, 1, 0],
-  [0, 1, 0, 0, 1, 0, 1, 1, 1, 0],
-  [0, 1, 0, 0, 1, 0, 1, 1, 1, 0]
-];
 
 var seat_list = [];
 
@@ -33,7 +28,6 @@ function render_seats() {
     for (var j = 0; j < 10; j++) {
       var copy = seat.cloneNode(true);
       copy.id = "" + i + j;
-      // console.log(copy.id);
       if (seat_matrix[i][j] === 0)
         copy.classList.add("Occupied");
       seat_container.append(copy);
@@ -44,14 +38,8 @@ function render_seats() {
 }
 
 function retrieve_no_seats() {
-  var url = window.location.href;
-  // var url = window.location.href + "/123456" + "/3";
-
-  var url_objects = url.split("/");
-  var no_of_seats = +(url_objects[url_objects.length - 1]);
-
-
-  return no_of_seats;
+  console.log(+(localStorage.getItem('person_counter')))
+  return +(localStorage.getItem('person_counter'));
 }
 
 function seat_selection(id) {
@@ -63,8 +51,6 @@ function seat_selection(id) {
     seat.classList.add("selected");
     seat_matrix[i][j]++;
     seat_list.push("" + i +j);
-
-    // console.log(seat_list);
   }
   else if (seat_matrix[i][j] === 2) {
     seat.classList.remove("selected");
@@ -74,15 +60,11 @@ function seat_selection(id) {
     var index = seat_list.indexOf("" + i +j);
     if (index !== -1)
       seat_list.splice(index, 1);
-
-    // console.log(seat_list);
   }
 
 }
 
 function finalize_seat() {
-  // console.log(seat_list.length);
-
   if (seat_list.length !== original_seat_count) {
     document.getElementById('submit-button').disabled = true;
     document.getElementById('info-zone').style.color = "#eb455f";
@@ -93,21 +75,35 @@ function finalize_seat() {
   }
 
   document.getElementById('info-zone').innerHTML = seat_list.length;
-
-
-
-  // localStorage.setItem("seat_list", seat_list);
-  // console.log(localStorage.getItem("seat_list"));
 }
 
-// render_seats();
-document.addEventListener("DOMContentLoaded", render_seats);
-document.addEventListener("DOMContentLoaded", finalize_seat);
-
-function seat_list_ret() {
+async function seat_list_ret() {
   localStorage.setItem("seat_list", seat_list);
+  localStorage.setItem("movieId", id)
 
-  // console.log(localStorage.getItem("seat_list"));
+  const venue = localStorage.getItem("venue")
+  const info_array = localStorage.getItem("info_array")
+  const movieTime = localStorage.getItem("movie")
+  const res = await fetch('http://localhost:3500/payment',{
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      seat_list,
+      venue,
+      info_array,
+      movieTime,
+      id
+    })
+  }).then(res=>{
+    if(res.ok) {
+      return res.json()
+    }
+    return res.json().then(json=>Promise.reject(json))
+  }).then(url=>{
+    location.href = url.url
+  })
 
   return true;
 }

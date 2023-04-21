@@ -1,33 +1,10 @@
-create google account
-name - Polaroid
-email - polaroid.support@gmail.com
-
---------------------------------------------------------
-optional - contact us form (title + description + email)
---------------------------------------------------------
-
 505 page - assigned to kalyan
 (done soon)
-
-payment gateway (stripe or razorpay) - IMPORTANT - assigned to prasad
-(done one tuesday/wednesday)
-
-booking backend + (javascript -> arka) - IMPORTANT - assigned to prasad
-(done on tuesday)
-arka instructions
-  -> in url there will be number of tickets
-  -> localhost:3500/book/<movieId>/<noOfTickets>
-  -> use this number for js validation
-  (done by wednesday)
 
 change lgbtq logo everywhere - assigned to kalyan
 (done soon)
 
 add delete review
-
-
-
-
 
 
 

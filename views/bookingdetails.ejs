@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/css/booking_details.css">
 <title>Polaroid | Booking Details</title>
 <div class="main">
-    <form method="post" action="/bookingdetails" onchange="return validateForm()">
+    <form method="get" id="form" onchange="return validateForm()">
         <div class="contact-essentials">
           <div class="email-div">
               <label for="email-input" class="email-label">Enter your email-address</label>
@@ -26,23 +26,18 @@
         <div class="selector-container">
           <label class="movie-selector-label" for ="vanue">Select A Vanue</label>
           <select id="venue" class="movie-selector" required autocomplete="off"
+            onchange="renderTimings()"
             oninvalid="this.setCustomValidity('Please select a vanue')"
             oninput="this.setCustomValidity('')">
-              <option value="">--Select a vanue--</option>
-              <option value="v1">Forum Value Mall</option>
-              <option value="v2">Chennai CSK Mall</option>
-              <option value="v3">Mumbai Indians Mall</option>
+              <% for (let i=0; i<data.length; i++) { %>
+                <option class="locationSelect" value=<%= i %>> <%=data[i].locations[0] %> </option>
+              <% } %>
           </select>
           <label class="movie-selector-label" for ="movie">Select A Movie</label>
           <select id="movie" class="movie-selector" required autocomplete="off"
             oninvalid="this.setCustomValidity('Please select a show timing')"
             oninput="this.setCustomValidity('')">
-              <option value="">--Select your show--</option>
-              <option value="t1">Timings: 9:00am</option>
-              <option value="t2">Timings: 12:20pm</option>
-              <option value="t3">Timings: 4:00pm</option>
-              <option value="t4">Timings: 6:30pm</option>
-              <option value="t5">Timings: 9:00pm</option>
+            <option class="timingClass" value="one">Option</option>
           </select>
         </div>
 
@@ -92,7 +87,7 @@
         <button type="button" class="btn btn-outline-warning" style="width: 37%" id="add-button" onclick="addPerson()">Add Person</button>
         </div>
 
-        <button type="submit" onclick="submit_form()" class="btn btn-outline-info" style="width: 100%" id="submit-button" disabled>Submit</button>
+        <button type="button" onclick="submit_form()" class="btn btn-outline-info" style="width: 100%" id="submit-button" disabled>Submit</button>
     </form>
 </div>
 <script src="/scripts/booking_details.js" charset="utf-8"></script>

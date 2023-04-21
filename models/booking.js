@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const schema = new mongoose.Schema
+const schema = mongoose.Schema;
 const bookingSchema = new schema({
   name: {
     type: String,

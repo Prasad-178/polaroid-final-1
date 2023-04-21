@@ -5,12 +5,38 @@ var personal_info_counter = 1;
 const urlArray = location.href.split('/')
 const id = urlArray[urlArray.length - 1]
 const fetchUrl = "http://localhost:3500/retrievebookingdetails/"+id
-console.log(fetchUrl)
-fetch(fetchUrl).then((res) => {
-  return res.json()
-}).then((data)=>{
-  console.log(data)
-})
+
+async function renderTimings() {
+  let data
+  fetch(fetchUrl).then((res) => {
+    return res.json()
+  }).then((data)=>{
+    data = data
+  
+    let venue = document.getElementById("venue").value
+    let venueTimings
+    venue = +venue
+    
+    console.log(data)
+    
+    venueTimings = data[venue].timings
+    
+    const movieId = document.getElementById("movie")
+    while (movieId.children.length > 1) {
+      movieId.lastChild.remove()
+    }
+    
+    let node = document.querySelector(".timingClass")
+    for (let i=0; i<venueTimings.length; i++) {
+      let temp = node.cloneNode(true)
+      temp.value = i
+      temp.innerHTML = venueTimings[i]
+      node.parentNode.appendChild(temp)
+    }
+  })
+}
+
+renderTimings()
 
 function validateForm() {
   var emailValidation;
@@ -133,30 +159,13 @@ function setDateRange() {
   var month = now.getMonth() + 1;   // As months start with 0
   var date = now.getDate();
 
-  /*var next = addMonths(now, 1);
-
-  var yearNext = next.getFullYear();
-  var monthNext = next.getMonth() + 1;    // As months start with 0
-  var dateNext = next.getDate();*/
-
   if (month < 10)
     month = '0' + month;
 
   if (date < 10)
     date = '0' + date;
 
-  /*if (monthNext < 10)
-    monthNext = '0' + monthNext;
-
-  if (dateNext < 10)
-    dateNext = '0' + dateNext;*/
-
   var formattedNow = year + '-' + month + '-' + date;
-  // var formattedNext = yearNext + '-' + monthNext + '-' + dateNext;
-
-  // console.log(formattedNow);
-  // console.log(formattedNext);
-  // console.log(dateSelector.length);
 
   for (var i = 0; i < dateSelector.length; i++) {
     dateSelector[i].max = formattedNow;
@@ -204,9 +213,13 @@ function submit_form() {
   localStorage.setItem("email", document.getElementById('email-input').value);
   localStorage.setItem("mobile", document.getElementById('mobile-input').value);
 
-  localStorage.setItem("venue", document.getElementById('venue').value);
-  // localStorage.setItem("date", document.getElementById('date').value);
-  localStorage.setItem("movie", document.getElementById('movie').value);
+  const venueArray = document.getElementById('venue').children
+  const venueIndex = document.getElementById('venue').value
+  localStorage.setItem("venue", venueArray[+venueIndex].innerHTML);
+
+  const movieArray = document.getElementById('movie').children
+  const movieIndex = document.getElementById('movie').value
+  localStorage.setItem("movie", movieArray[+movieIndex+1].innerHTML);
 
   const venue = document.getElementById('venue').value
   const movieName = document.getElementById('movie').value
@@ -237,20 +250,12 @@ function submit_form() {
     localStorage.setItem("info_array", JSON.stringify(info_array));
   }
 
-  // console.log(localStorage.getItem("info_array"));
+  localStorage.setItem("person_counter", personal_info_counter)
+  let url_string = '/booking/' + venue + '/' + movieId.split("?")[0] + '/' + movieName;
+  console.log(url_string)
 
-  // console.log(personal_info_counter);
-
-  let url_string = '/booking/' + venue + '/' + movieId + '/' +personal_info_counter;
-
-  location.href = url_string;
+  window.location.replace(url_string)
 }
-
-// .onclick= {
-//   localStorage.setjndd////..
-
-//   location.href = "/booking/filmid/venueid/date/timing/3"
-// }
 
 document.getElementById('email-input').addEventListener("focusin", onFocusinEmail);
 document.getElementById('email-input').addEventListener("focusout", onFocusoutEmail);

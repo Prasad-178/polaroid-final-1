@@ -4,6 +4,9 @@ const getSimilarMovies = require("../../api/getSimilarMovies");
 const getWatchProviders = require("../../api/getWatchProviders");
 const Review = require("../../models/reviews");
 const session = require("../../session/session");
+const checkIfFavourite = require("../user/checkIfFavourite");
+const checkIfInWatchlist = require("../user/checkIfInWatchlist");
+const checkIfWatched = require("../user/checkIfWatched");
 const getReviews = require("./getReviewsAndRating");
 
 const addReview = async (req, res) => {
@@ -24,7 +27,10 @@ const addReview = async (req, res) => {
     const cast = await getMovieCredits(req.params.id);
     const watch = await getWatchProviders(req.params.id);
     const reviews = await getReviews(req.params.id);
+    const isFavourite = await checkIfFavourite(id)
     const similar = await getSimilarMovies(req.params.id);
+    const isWatchlist = await checkIfInWatchlist(id)
+    const isWatched = await checkIfWatched(id)
     res.render("film", {
       check: session.isLoggedIn,
       username: session.username,
@@ -34,7 +40,10 @@ const addReview = async (req, res) => {
       watchProviders: watch.results.IN,
       reviews: reviews,
       errorReview: "",
-      similar: similar,
+    isFavourite: isFavourite,
+    similar: similar,
+    isWatched: isWatched,
+    isWatchlist: isWatchlist
     });
     return;
   }
@@ -44,8 +53,11 @@ const addReview = async (req, res) => {
     const movieData = await getMovieById(id);
     const cast = await getMovieCredits(id);
     const watch = await getWatchProviders(id);
+    const isFavourite = await checkIfFavourite(id)
     const reviews = await getReviews(id);
     const similar = await getSimilarMovies(id);
+    const isWatchlist = await checkIfInWatchlist(id)
+    const isWatched = await checkIfWatched(id)
     res.render("film", {
       check: session.isLoggedIn,
       username: session.username,
@@ -56,6 +68,9 @@ const addReview = async (req, res) => {
       reviews: reviews,
       errorReview: "You have already reviewed this movie!",
       similar: similar,
+      isFavourite: isFavourite,
+      isWatched: isWatched,
+      isWatchlist: isWatchlist
     });
     return;
   }
@@ -75,7 +90,10 @@ const addReview = async (req, res) => {
     const cast = await getMovieCredits(req.params.id);
     const watch = await getWatchProviders(req.params.id);
     const reviews = await getReviews(req.params.id);
+    const isFavourite = await checkIfFavourite(id)
     const similar = await getSimilarMovies(req.params.id);
+    const isWatchlist = await checkIfInWatchlist(id)
+    const isWatched = await checkIfWatched(id)
     res.render("film", {
       check: session.isLoggedIn,
       username: session.username,
@@ -86,6 +104,9 @@ const addReview = async (req, res) => {
       reviews: reviews,
       errorReview: "",
       similar: similar,
+      isFavourite: isFavourite,
+      isWatched: isWatched,
+      isWatchlist: isWatchlist
     });
     return;
   }

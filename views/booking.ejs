@@ -2,7 +2,7 @@
 <%- include('./partials/nav.ejs', {check: check, username: username, email: email}) %>
 <link rel="stylesheet" href="/css/booking.css">
 <title>Polaroid | Seat Selection</title>
-<form method="post" action="/booking" onsubmit="return seat_list_ret()" onclick="finalize_seat()">
+<form onclick="finalize_seat()">
   <div class="main">
       <div class="heade-div">
         Please select your seat(s)
@@ -32,7 +32,7 @@
       <div class="info-zone">
         You have selected&nbsp;<div id="info-zone"></div>&nbsp;seats.
       </div>
-      <button type="submit" id="submit-button" class="btn btn-outline-success" style="width:75%;" disabled>Proceed to Payment</button>
+      <button type="button" onclick="return seat_list_ret()" id="submit-button" class="btn btn-outline-success" style="width:75%;" disabled>Proceed to Payment</button>
   </div>
 </form>
 <script src="/scripts/book_seats.js" charset="utf-8"></script>
