@@ -212,6 +212,7 @@ router.get("/list/:username/:listName", async (req, res) => {
     time: "Created On " + list.createdAt.slice(0, 15),
     isTrending: false,
     listHeading: list.listName,
+    editable: false
   });
 });
 
@@ -272,7 +273,7 @@ router.get("/bookingdetails/:id", async (req, res) => {
   //       }
   //     ,
   //       {
-  //         movieName: "597", 
+  //         movieName: "597",
   //         timings: [
   //           {
   //             timing: "15th_Apr,_11AM"
@@ -298,7 +299,7 @@ router.get("/bookingdetails/:id", async (req, res) => {
   //           {
   //             timing: "17th_Apr,_11.05PM"
   //           },
-  //         ] 
+  //         ]
   //       }
   //     ]
   //   })
@@ -337,7 +338,7 @@ router.get("/bookingdetails/:id", async (req, res) => {
   //         }
   //       ,
   //         {
-  //           movieName: "597", 
+  //           movieName: "597",
   //           timings: [
   //             {
   //               timing: "15th_Apr,_11AM"
@@ -363,7 +364,7 @@ router.get("/bookingdetails/:id", async (req, res) => {
   //             {
   //               timing: "17th_Apr,_11.05PM"
   //             },
-  //           ] 
+  //           ]
   //         }
   //       ]
   //   })
@@ -454,7 +455,8 @@ router.get("/trending/week", async (req, res) => {
     heading: "TRENDING THIS WEEK",
     time: "Updated 6h ago",
     isTrending: true,
-    listHeading: "Movies Most Popular This Week"
+    listHeading: "Movies Most Popular This Week",
+    editable: false
   });
 });
 
@@ -468,7 +470,8 @@ router.get("/trending/day", async (req, res) => {
     heading: "TRENDING TODAY",
     time: "Updated 6h ago",
     isTrending: true,
-    listHeading: "Movies Most Popular Today"
+    listHeading: "Movies Most Popular Today",
+    editable: false
   });
 });
 
@@ -507,11 +510,11 @@ router.get("/about", (req, res) => {
 });
 
 router.get('/profile/:name', async (req, res) => {
-  const name = req.params.name.split("%20").join(" ") 
+  const name = req.params.name.split("%20").join(" ")
   if (name == session.username) {
     res.redirect('/user/profile')
     return
-  } 
+  }
   const user = await getUserByName(name)
   console.log(user)
   res.render("othersProfile", {
@@ -561,7 +564,7 @@ router.get("/film/:id", async (req, res) => {
   const isWatchlist = await checkIfInWatchlist(id)
   const isWatched = await checkIfWatched(id)
   if (session.username === "") lists = []
-  else lists = await getMyLists() 
+  else lists = await getMyLists()
     res.render("film", {
     check: session.isLoggedIn,
     username: session.username,
@@ -581,7 +584,7 @@ router.get("/film/:id", async (req, res) => {
 
 router.get("/list/add/:listName/:id", async (req, res) => {
   let listName = req.params.listName
-  listName = listName.split("%20").join(" ") 
+  listName = listName.split("%20").join(" ")
   const id = req.params.id
   const result = await appendToList(listName, id)
 

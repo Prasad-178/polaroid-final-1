@@ -18,6 +18,7 @@ const removeFromWatched = require("../controllers/watched/removeFromWatched");
 const deleteAccount = require("../controllers/user/deleteAccount");
 const forgotPasswordOTP = require("../controllers/user/forgotPasswordOTP");
 const resetPassword = require("../controllers/user/resetPassword");
+const deleteItemFromList = require("../controllers/list/deleteItemFromList");
 const router = Router();
 
 router.get("/login", (req, res) => {
@@ -108,8 +109,22 @@ router.get("/list/:listName", async (req, res) => {
     time: "Created On " + list.createdAt.slice(0, 15),
     isTrending: false,
     listHeading: list.listName,
+    editable: true
   });
 });
+
+router.post("/delete/list/:listName/:filmname", async (req, res) => {
+  console.log("delete trigger")
+
+  var listName = req.params.listName.split("%20").join(" ")
+  var filmName = req.params.filmname
+
+  await deleteItemFromList(listName, filmName)
+
+  console.log(listName+ " " + filmName)
+
+  res.redirect("/user/list")
+})
 
 router.get("/watchlist", async (req, res) => {
   const user = await getUser()

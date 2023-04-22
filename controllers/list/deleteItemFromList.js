@@ -1,8 +1,8 @@
 const list = require("../../models/list")
 const session = require("../../session/session")
 
-const deleteFromList = async (req, res) => {
-    const { listName, listItem } = req.body
+const deleteFromList = async (listName, listItem) => {
+    // const { listName, listItem } = req.body
 
     let existingList
     try {
@@ -17,9 +17,13 @@ const deleteFromList = async (req, res) => {
         return
     }
 
-    existingList = existingList.items.filter((x) => {
-        return x !== item
+    // console.log(existingList)
+
+    existingList.items = existingList.items.filter((x) => {
+        return x.id !== listItem
     })
+
+    // console.log(existingList)
 
     try {
         await existingList.save()
@@ -27,7 +31,7 @@ const deleteFromList = async (req, res) => {
         console.log(err)
         return
     }
-    
+
     return
 }
 

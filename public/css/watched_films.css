@@ -6,6 +6,8 @@ body {
 
 .main {
   margin: 2% 20% 2% 20%;
+  min-height: 100vh;
+  min-width: 60%;
 }
 
 .header {
@@ -24,6 +26,7 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  min-width: 60%;
 }
 
 .switch {
