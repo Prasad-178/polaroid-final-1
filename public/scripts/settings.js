@@ -1,16 +1,21 @@
 var isPassSame = true;
+var isPassStrong = true;
 
 function validateForm() {
   var passValidation = checkPassword();
+  var passStrength = strongPassCheck();
 
   if (passValidation === false) {
     document.getElementById('alert-zone').innerHTML = "Password does not match";
+  }
+  else if(passStrength === false) {
+  	document.getElementById('alert-zone').innerHTML = "Please enter strong password";
   }
   else {
     document.getElementById('alert-zone').innerHTML = "";
   }
 
-  return passValidation;
+  return passValidation && passStrength;
 }
 
 function checkPassword() {
@@ -34,6 +39,19 @@ function checkPassword() {
   return isPassSame;
 }
 
+function strongPassCheck() {
+  var passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
+
+  var pass = document.getElementById('password-input').value;
+
+  if ((pass != "") && !pass.match(passRegex))
+    isPassStrong = false;
+  else
+    isPassStrong = true;
+
+  return isPassStrong;
+}
+
 function onFocusinPass() {
   document.getElementById('password-input').style.outline = "none";
   document.getElementById('password-input').style.backgroundColor = "#789";
@@ -45,7 +63,7 @@ function onFocusinRePass() {
 }
 
 function onFocusoutPass() {
-  if (!isPassSame) {
+  if (!isPassSame || !isPassStrong) {
     document.getElementById('password-input').style.backgroundColor = "#eb9898";
     document.getElementById('password-input').style.outline = "2px solid red";
   }
@@ -56,7 +74,7 @@ function onFocusoutPass() {
 }
 
 function onFocusoutRePass() {
-  if (!isPassSame) {
+  if (!isPassSame || !isPassStrong) {
     document.getElementById('repassword-input').style.backgroundColor = "#eb9898";
     document.getElementById('repassword-input').style.outline = "2px solid red";
   }
@@ -67,7 +85,7 @@ function onFocusoutRePass() {
 }
 
 function disableButton() {
-  if (!isPassSame) {
+  if (!isPassSame || !isPassStrong) {
     document.getElementById('submit-button').disabled = true;
   }
   else {
