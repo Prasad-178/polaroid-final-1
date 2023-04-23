@@ -24,6 +24,10 @@ app.use('/', baseRouter)
 app.use('/user', userRouter)
 app.use('/search', searchRouter)
 
+app.get('/505test', (req,res) => {
+    res.render('505')
+})
+
 app.get('*', (req, res) => {
     res.render('404', {check: true})
 })
