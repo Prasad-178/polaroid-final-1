@@ -12,14 +12,6 @@ body {
   margin-bottom: 30px;
 }
 
-img {
-  width: 3%;
-  position: absolute;
-  top: 6%;
-  left: 4%;
-  height: auto;
-}
-
 .content {
   font-size: 1.25em;
   line-height: 1.4em;
@@ -51,7 +43,7 @@ img {
   width: 10px;
 }
 
-.title:hover { 
+.title:hover {
   color: #4E4B52  ;
 }
 
