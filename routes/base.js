@@ -220,6 +220,10 @@ router.get("/payment/success", (req, res) => {
   res.render("success");
 });
 
+router.get("/payment/failure", (req, res) => {
+  res.render("505");
+});
+
 router.post('/confirmticket', async (req, res) => {
   await addBooking(req, res)
 })
