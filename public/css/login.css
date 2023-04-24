@@ -133,7 +133,15 @@ body {
   top: 60px;
   left: 160px;
   cursor: pointer;
-  height: 20px;
+  height: 40px;
+}
+
+.logoreg {
+  position: fixed;
+  top: 45px;
+  left: 160px;
+  cursor: pointer;
+  height: 40px;
 }
 
 .pass-info {

@@ -123,7 +123,7 @@ router.post("/delete/list/:listName/:filmname", async (req, res) => {
 
   console.log(listName+ " " + filmName)
 
-  res.redirect("/user/list")
+  res.redirect("/user/list/"+listName)
 })
 
 router.get("/watchlist", async (req, res) => {

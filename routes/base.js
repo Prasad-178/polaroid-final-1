@@ -200,7 +200,7 @@ router.get('/lists/:username', async (req, res) => {
 router.get("/list/:username/:listName", async (req, res) => {
   let username = req.params.username
   let listName = req.params.listName;
-  listName.split("%20").join(" ") ;
+  listName = listName.split("%20").join(" ") ;
 
   const list = await getList(username, listName);
   res.render("list_page", {
@@ -523,9 +523,10 @@ router.get('/profile/:name', async (req, res) => {
     res.redirect('/user/profile')
     return
   }
-  const user = await getUserByName(name)
-  if (!user.user) {
-    res.redirect('/networkerror')
+  const data = await getUserByName(name)
+  console.log(data)
+  if (!data.user) {
+    res.redirect('/usernotfound')
     return
   }
   res.render("othersProfile", {
@@ -533,8 +534,8 @@ router.get('/profile/:name', async (req, res) => {
     username: session.username,
     email: session.email,
     currentUser: false,
-    data: user.user,
-    listLength: user.listLength
+    data: data.user,
+    listLength: data.listLength
   });
 })
 
@@ -554,10 +555,6 @@ router.get("/films", async (req, res) => {
     nowPlaying: nowPlaying,
     trendingMovies: trendingMovies
   });
-});
-
-router.post("/bookingdetails", (req, res) => {
-  res.redirect("/booking");
 });
 
 router.post("/booking", (req, res) => {
