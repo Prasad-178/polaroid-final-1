@@ -22,24 +22,27 @@
           <div class="error-div" id="alert-zone-2"></div>
         </div>
 
-
-        <div class="selector-container">
-          <label class="movie-selector-label" for ="vanue">Select A Vanue</label>
-          <select id="venue" class="movie-selector" required autocomplete="off"
-            onchange="renderTimings()"
-            oninvalid="this.setCustomValidity('Please select a vanue')"
-            oninput="this.setCustomValidity('')">
-              <% for (let i=0; i<data.length; i++) { %>
-                <option class="locationSelect" value=<%= i %>> <%=data[i].locations[0] %> </option>
-              <% } %>
-          </select>
-          <label class="movie-selector-label" for ="movie">Select A Movie</label>
-          <select id="movie" class="movie-selector" required autocomplete="off"
-            oninvalid="this.setCustomValidity('Please select a show timing')"
-            oninput="this.setCustomValidity('')">
-            <option class="timingClass" value="one">Option</option>
-          </select>
-        </div>
+        <% if (data.length !== 0) { %>
+          <div class="selector-container">
+            <label class="movie-selector-label" for ="venue">Select A Venue</label>
+            <select id="venue" class="movie-selector" required autocomplete="off"
+              onchange="renderTimings()"
+              oninvalid="this.setCustomValidity('Please select a venue')"
+              oninput="this.setCustomValidity('')">
+                <% for (let i=0; i<data.length; i++) { %>
+                  <option class="locationSelect" value=<%= i %>> <%=data[i].locations[0] %> </option>
+                <% } %>
+            </select>
+            <label class="movie-selector-label" for ="movie">Select A Movie</label>
+            <select id="movie" class="movie-selector" required autocomplete="off"
+              oninvalid="this.setCustomValidity('Please select a show timing')"
+              oninput="this.setCustomValidity('')">
+              <option class="timingClass" value="one">Option</option>
+            </select>
+          </div>
+        <% } else { %>
+          <p style="color: red; font-size:large;">No shows available!</p>
+        <% } %>
 
         <div>
           <div class="personal-info-div" name="person-personal-info">

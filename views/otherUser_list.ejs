@@ -12,7 +12,7 @@
     <div class="list-card-group" id="card-group">
         <% for (let index=0; index<Math.min(lists.length, 12); index++) { %>
             <div class="list-card">
-                <a href= <%= '/list/'+lists[index].createdBy +"/"+lists[index].listName.split(" ").join("%20") %> >
+                <a href= <%= '/list/'+lists[index].createdBy.split(" ").join("%20") +"/"+lists[index].listName.split(" ").join("%20") %> >
                     <% if (lists[index].items.length > 0) { %>
                         <div class="img-container"><img src= <%= "https://image.tmdb.org/t/p/original" + lists[index].items[0].poster_path %> alt="Avatar"></div>
                     <% } %>
