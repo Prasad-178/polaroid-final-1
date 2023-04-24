@@ -513,6 +513,10 @@ router.get("/about", (req, res) => {
   });
 });
 
+router.get('/networkerror', (req, res) => {
+  res.render('505')
+})
+
 router.get('/profile/:name', async (req, res) => {
   const name = req.params.name.split("%20").join(" ")
   if (name == session.username) {
@@ -520,7 +524,10 @@ router.get('/profile/:name', async (req, res) => {
     return
   }
   const user = await getUserByName(name)
-  console.log(user)
+  if (!user.user) {
+    res.redirect('/networkerror')
+    return
+  }
   res.render("othersProfile", {
     check: session.isLoggedIn,
     username: session.username,

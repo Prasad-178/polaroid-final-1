@@ -47,7 +47,7 @@
           <li><a class="dropdown-item" href="/user/watchlist">Watchlist</a></li>
           <!-- <li><a class="dropdown-item" href="/user/bookinghistory">Booking History</a></li> -->
           <li><a class="dropdown-item" href="/user/watchedfilms">Watched Films</a></li>
-          <li><a class="dropdown-item" href=<%="/followers/"+username%> >Network</a></li>
+          <li><a class="dropdown-item" href=<%="/followers/"+username.split(" ").join("%20")%> >Network</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item" href="/user/logout">Sign Out</a></li>
         </ul>

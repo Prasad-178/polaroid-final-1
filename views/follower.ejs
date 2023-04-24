@@ -5,10 +5,10 @@
 <div class="main">
   <div class="select-section">
     <div class="nav-link">
-      <a href=<%="/followers/"+id%> class="section-name  active">followers</a>
+      <a href=<%="/followers/"+id.split(" ").join("%20") %> class="section-name  active">followers</a>
     </div>
     <div class="nav-link">
-      <a href=<%="/following/"+id%> class="section-name">following</a>
+      <a href=<%="/following/"+id.split(" ").join("%20") %> class="section-name">following</a>
     </div>
   </div>
   <div class="header-line"></div>
